@@ -93,6 +93,11 @@ Event::listen('500', function()
 Route::filter('before', function()
 {
 	// Do stuff before every request to your application...
+
+	// For page redirection upon login and logout
+	if(URI::current() !== 'login') {
+		Session::put('destination', url(URI::current()));
+	}
 });
 
 Route::filter('after', function($response)
@@ -107,5 +112,8 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('login');
+	if (Auth::guest()) {
+		Session::reflash(); // For messages
+		return Redirect::to('login');
+	}
 });
