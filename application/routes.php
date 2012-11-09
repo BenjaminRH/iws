@@ -32,10 +32,27 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('home.index');
+// Main
+Route::get('/', 'main@index');
+Route::get('home', function() {
+	return Redirect::to('/');
 });
+Route::get('contact', 'main@contact');
+Route::post('contact', 'main@contact');
+
+// User
+Route::get('users', 'users@index');
+Route::get('users/add', 'users@add');
+Route::post('users/add', 'users@add');
+Route::get('users/edit/(:num)', 'users@edit');
+Route::post('users/edit/(:num)', 'users@edit');
+Route::get('users/delete/(:num)', 'users@delete');
+Route::post('users/delete/(:num)', 'users@delete');
+
+// Auth
+Route::get('login', 'auth@login');
+Route::post('login', 'auth@login');
+Route::get('logout', 'auth@logout');
 
 /*
 |--------------------------------------------------------------------------

@@ -1,0 +1,1 @@
+This is the /home/benjamin/Desktop/iws_laravel/application/views/series/edit.blade.php view

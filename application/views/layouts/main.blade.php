@@ -26,21 +26,21 @@
 <body>
 
 	<header class="row">
-		@yield('header')
+		{{ render('layouts.header') }}
 	</header>
 
 	<div class="row">
 		<div class="eight columns">
-			@yield('main-content')
+			@yield('content')
 		</div>
 
 		<div class="four columns sidebar">
-			@yield('sidebar')
+			{{ render('layouts.sidebar') }}
 		</div>
 	</div>
 
 	<footer class="row">
-		@yield('footer')
+		{{ render('layouts.footer') }}
 	</footer>
 	
 	<!-- Included JS Files (Compressed) -->

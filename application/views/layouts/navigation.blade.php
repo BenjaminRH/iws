@@ -1,6 +1,3 @@
-@layout('header')
-
-@section('navigation')
 <ul class="nav-bar">
 	<li><a href="#">Home</a></li>
 	<li><a href="#">Web Series</a></li>
@@ -9,4 +6,3 @@
 	<li><a href="#">About</a></li>
 	<li><a href="#">Contact</a></li>
 </ul>
-@endsection
