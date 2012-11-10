@@ -13,13 +13,13 @@ class Users_Controller extends Base_Controller
         // PAGE - List of users
         $users = User::order_by('email', 'asc')->get();
 
-        return View::make('pages.users.users')->with('users', $users);
+        return View::make('user.index')->with('users', $users);
     }
 
     public function get_add()
     {
         // PAGE - Add a new user
-        return View::make('pages.users.add_user');
+        return View::make('user.new');
     }
 
     public function post_add()
@@ -39,7 +39,7 @@ class Users_Controller extends Base_Controller
         // Add user to database
         $user = User::create_user($input);
 
-        return Redirect::to('users')->with('status', 'User '.$user->email.' has been saved!');
+        return Redirect::to('users')->with('status', 'User '.$user->name.' has been saved!');
     }
 
     public function get_edit($user_id)
@@ -51,7 +51,7 @@ class Users_Controller extends Base_Controller
             return Response::error('404');
         }
 
-        return View::make('pages.users.edit_user')->with('user', $user);
+        return View::make('user.edit')->with('user', $user);
     }
 
     public function post_edit($user_id)
@@ -71,7 +71,7 @@ class Users_Controller extends Base_Controller
         // Update user database entry
         $user->update_user($input);
 
-        return Redirect::to('users')->with('status', 'Your changes to user '.$user->email.' have been saved!');
+        return Redirect::to('users')->with('status', 'Your changes to user '.$user->name.' have been saved!');
     }
 
     public function get_delete($user_id)
@@ -83,7 +83,7 @@ class Users_Controller extends Base_Controller
             return Response::error('404');
         }
 
-        return View::make('pages.users.delete_user')->with('user', $user);
+        return View::make('user.delete')->with('user', $user);
     }
 
     public function post_delete($user_id)
@@ -99,8 +99,8 @@ class Users_Controller extends Base_Controller
         }
         
         // Now delete the user
-        $user_email = $user->email;
+        $user_name = $user->name;
         $user->delete();
-        return Redirect::to('users')->with('status', 'User '.$user_email.' has been deleted.');
+        return Redirect::to('users')->with('status', 'User '.$user_name.' has been deleted.');
     }
 }

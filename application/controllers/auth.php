@@ -7,7 +7,7 @@ class Auth_Controller extends Base_Controller
 		'password' => 'required|min:5'
 	);
 
-	private $input_accepts_login = array(
+	private $accessible = array(
 		'email',
 		'password'
 	);
@@ -16,7 +16,7 @@ class Auth_Controller extends Base_Controller
 	{
 		// PAGE - Login
 		if (Auth::guest()) {
-			return View::make('pages.users.login');
+			return View::make('user.login');
 		} else {
 			return Redirect::home()->with('status-error', 'You are already logged in.');
 		}
@@ -25,7 +25,7 @@ class Auth_Controller extends Base_Controller
 	public function post_login()
 	{
 		// HANDLE - Login
-		$input = Input::only($this->input_accepts_login);
+		$input = Input::only($this->accessible);
 		Input::flash();
 		$rules = $this->validation_rules;
 		$validation = Validator::make($input, $rules);

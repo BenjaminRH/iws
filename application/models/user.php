@@ -7,13 +7,15 @@ class User extends Eloquent
 
 	// Acceptable inputs
 	public static $accessible = array(
+		'name',
 		'email',
 		'password',
 		'password_confirmation'
 	);
 
 	// Validation rules
-	public static $rules = array(
+	public static $validation_rules = array(
+		'name' => 'required',
 		'email' => 'required|email|unique:users,email',
 		'password' => 'min:5',
 		'password_confirmation' => 'same:password'
@@ -28,6 +30,7 @@ class User extends Eloquent
 	// Create a user
 	public static function create_user($input) {
 		$user = new User;
+		$user->name = $input['name'];
 		$user->email = $input['email'];
 		$user->password = Hash::make($input['password']);
 		$user->save();
@@ -37,6 +40,7 @@ class User extends Eloquent
 
 	// Update a user
 	public function update_user($input) {
+		$user->name = $input['name'];
 		$this->email = $input['email'];
 		if($input['password']) {
 			$this->password = Hash::make($input['password']);
