@@ -6,45 +6,52 @@ class Post extends Eloquent
 	public static $timestamps = false;
 
 	// Acceptable inputs
-	public static $accessible = array(
-		'name',
-		'email',
-		'password',
-		'password_confirmation'
-	);
+	public static $accessible = array('title', 'slug', 'body');
 
 	// Validation rules
 	public static $validation_rules = array(
-		'name' => 'required',
-		'email' => 'required|email|unique:users,email',
-		'password' => 'min:5',
-		'password_confirmation' => 'same:password'
+		'title' => 'required',
+		'slug' => 'required',
+		'body' => 'required|min:100'
 	);
-	
-	// Find a user by email address
-	public static function find_by_email($email)
+
+	// Post belongs_to user
+	public function user() {
+		return $this->belongs_to('User');
+	}
+
+	// Post belongs_to category
+	public function category() {
+		return $this->belongs_to('Category');
+	}
+
+	// Post has_many_and_belongs_to tag
+	public function tags() {
+		return $this->has_many_and_belongs_to('Tag');
+	}
+
+	// Find post by slug
+	static function find_by_slug($slug)
 	{
-		return Post::where_email($email)->first();
+		return static::where_slug($slug)->first();
 	}
 
-	// Create a user
-	public static function create_user($input) {
-		$user = new Post;
-		$user->name = $input['name'];
-		$user->email = $input['email'];
-		$user->password = Hash::make($input['password']);
-		$user->save();
+	// Create a post
+	public static function create_post($input) {
+		$post = new Post;
+		$post->title = $input['title'];
+		$post->slug = $input['slug'];
+		$post->body = $input['body'];
+		$post->save();
 
-		return $user;
+		return $post;
 	}
 
-	// Update a user
-	public function update_user($input) {
-		$user->name = $input['name'];
-		$this->email = $input['email'];
-		if($input['password']) {
-			$this->password = Hash::make($input['password']);
-		}
+	// Update a post
+	public function update_post($input) {
+		$this->title = $input['title'];
+		$this->slug = $input['slug'];
+		$this->body = $input['body'];
 		$this->save();
 
 		return $this;

@@ -1,1 +1,0 @@
-This is the /home/benjamin/Desktop/iws_laravel/application/views/poll/index.blade.php view

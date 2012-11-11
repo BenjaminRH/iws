@@ -6,45 +6,28 @@ class Category extends Eloquent
 	public static $timestamps = false;
 
 	// Acceptable inputs
-	public static $accessible = array(
-		'name',
-		'email',
-		'password',
-		'password_confirmation'
-	);
+	public static $accessible = array('name');
 
 	// Validation rules
-	public static $validation_rules = array(
-		'name' => 'required',
-		'email' => 'required|email|unique:users,email',
-		'password' => 'min:5',
-		'password_confirmation' => 'same:password'
-	);
-	
-	// Find a user by email address
-	public static function find_by_email($email)
-	{
-		return Category::where_email($email)->first();
+	public static $validation_rules = array('name' => 'required');
+
+	// Category has_many posts
+	public function posts() {
+		return $this->has_many('Post');
 	}
 
-	// Create a user
-	public static function create_user($input) {
-		$user = new Category;
-		$user->name = $input['name'];
-		$user->email = $input['email'];
-		$user->password = Hash::make($input['password']);
-		$user->save();
+	// Create a category
+	public static function create_category($input) {
+		$category = new Category;
+		$category->name = $input['name'];
+		$category->save();
 
-		return $user;
+		return $category;
 	}
 
-	// Update a user
-	public function update_user($input) {
-		$user->name = $input['name'];
-		$this->email = $input['email'];
-		if($input['password']) {
-			$this->password = Hash::make($input['password']);
-		}
+	// Update a category
+	public function update_category($input) {
+		$this->name = $input['name'];
 		$this->save();
 
 		return $this;

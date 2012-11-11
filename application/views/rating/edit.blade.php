@@ -1,1 +1,0 @@
-This is the /home/benjamin/Desktop/iws_laravel/application/views/rating/edit.blade.php view

@@ -40,7 +40,7 @@ class User extends Eloquent
 
 	// Update a user
 	public function update_user($input) {
-		$user->name = $input['name'];
+		$this->name = $input['name'];
 		$this->email = $input['email'];
 		if($input['password']) {
 			$this->password = Hash::make($input['password']);
