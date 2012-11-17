@@ -2,105 +2,100 @@
 
 class Tags_Controller extends Base_Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->filter('before', 'auth');
-    }
+	public function __construct()
+	{
+		parent::__construct();
+		$this->filter('before', 'auth');
+	}
 
-    public function get_index()
-    {
-        // PAGE - List of users
-        $users = User::order_by('email', 'asc')->get();
+	public function get_index()
+	{
+		// PAGE - List of tags
+		$tags = Tag::order_by('name', 'asc')->get();
 
-        return View::make('user.index')->with('users', $users);
-    }
+		return View::make('tag.index')->with('tags', $tags);
+	}
 
-    public function get_add()
-    {
-        // PAGE - Add a new user
-        return View::make('user.new');
-    }
+	public function get_add()
+	{
+		// PAGE - Add a new tag
+		return View::make('tag.new');
+	}
 
-    public function post_add()
-    {
-        // HANDLE - Add a new user
-        $input = Input::only($this->input_accepts);
-        Input::flash();
-        $rules = $this->validation_rules;
-        $rules['password'] .= '|required';
-        $rules['password_confirmation'] .= '|required';
-        $validation = Validator::make($input, $rules);
+	public function post_add()
+	{
+		// HANDLE - Add a new tag
+		$input = Input::only(Tag::$accessible);
+		Input::flash();
+		$validation = Validator::make($input, Tag::$validation_rules);
 
-        if($validation->fails()) {
-            return Redirect::back()->with_input()->with_errors($validation);
-        }
+		if($validation->fails()) {
+			return Redirect::back()->with_input()->with_errors($validation);
+		}
 
-        // Add user to database
-        $user = User::create_user($input);
+		// Add tag to database
+		$tag = Tag::create_tag($input);
 
-        return Redirect::to('users')->with('status', 'User '.$user->name.' has been saved!');
-    }
+		return Redirect::to('tag.index')->with('status', 'Tag '.$tag->name.' has been saved!');
+	}
 
-    public function get_edit($user_id)
-    {
-        // PAGE - Edit an existing user
-        $user = User::find($user_id);
+	public function get_edit($tag_id)
+	{
+		// PAGE - Edit an existing tag
+		$tag = Tag::find($tag_id);
 
-        if(!$user) {
-            return Response::error('404');
-        }
+		if(!$tag) {
+			return Response::error('404');
+		}
 
-        return View::make('user.edit')->with('user', $user);
-    }
+		return View::make('tag.edit')->with('tag', $tag);
+	}
 
-    public function post_edit($user_id)
-    {
-        // HANDLE - Edit an existing user
-        $user = User::find($user_id);
-        $input = Input::only($this->input_accepts);
-        Input::flash();
-        $rules = $this->validation_rules;
-        $rules['email'] .= ','.$user_id;
-        $validation = Validator::make($input, $rules);
+	public function post_edit($tag_id)
+	{
+		// HANDLE - Edit an existing tag
+		$tag = Tag::find($tag_id);
+		$input = Input::only(Tag::$accessible);
+		Input::flash();
+		$validation = Validator::make($input, Tag::$validation_rules);
 
-        if($validation->fails()) {
-            return Redirect::back()->with_input()->with_errors($validation)->with('user', $user);
-        }
+		if($validation->fails()) {
+			return Redirect::back()->with_input()->with_errors($validation)->with('tag', $tag);
+		}
 
-        // Update user database entry
-        $user->update_user($input);
+		// Update tag database entry
+		$tag->update_tag($input);
 
-        return Redirect::to('users')->with('status', 'Your changes to user '.$user->name.' have been saved!');
-    }
+		return Redirect::to('tag.index')->with('status', 'Your changes to tag '.$tag->name.' have been saved!');
+	}
 
-    public function get_delete($user_id)
-    {
-        // PAGE - Confirm user deletion
-        $user = User::find($user_id);
+	public function get_delete($tag_id)
+	{
+		// PAGE - Confirm tag deletion
+		$tag = Tag::find($tag_id);
 
-        if(!$user) {
-            return Response::error('404');
-        }
+		if(!$tag) {
+			return Response::error('404');
+		}
 
-        return View::make('user.delete')->with('user', $user);
-    }
+		return View::make('tag.delete')->with('tag', $tag);
+	}
 
-    public function post_delete($user_id)
-    {
-        // HANDLE - Delete the user if deletion is confirmed
-        $input = Input::only(array('delete-confirm'));
-        $rules = array('delete-confirm' => 'accepted');
-        $validation = Validator::make($input, $rules);
-        $user = User::find($user_id);
+	public function post_delete($tag_id)
+	{
+		// HANDLE - Delete the tag if deletion is confirmed
+		$input = Input::only(array('delete-confirm'));
+		$rules = array('delete-confirm' => 'accepted');
+		$validation = Validator::make($input, $rules);
+		$tag = Tag::find($tag_id);
 
-        if($validation->fails()) {
-            return Redirect::back()->with_errors($validation)->with('user', $user);
-        }
-        
-        // Now delete the user
-        $user_name = $user->name;
-        $user->delete();
-        return Redirect::to('users')->with('status', 'User '.$user_name.' has been deleted.');
-    }
+		if($validation->fails()) {
+			return Redirect::back()->with_errors($validation)->with('tag', $tag);
+		}
+		
+		// Now delete the tag
+		$tag_name = $tag->name;
+		$tag->delete();
+		return Redirect::to('tag.index')->with('status', 'Tag '.$tag_name.' has been deleted.');
+	}
 }

@@ -2,105 +2,100 @@
 
 class Categories_Controller extends Base_Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->filter('before', 'auth');
-    }
+	public function __construct()
+	{
+		parent::__construct();
+		$this->filter('before', 'auth');
+	}
 
-    public function get_index()
-    {
-        // PAGE - List of users
-        $users = User::order_by('email', 'asc')->get();
+	public function get_index()
+	{
+		// PAGE - List of categories
+		$categories = Category::order_by('name', 'asc')->get();
 
-        return View::make('user.index')->with('users', $users);
-    }
+		return View::make('category.index')->with('categories', $categories);
+	}
 
-    public function get_add()
-    {
-        // PAGE - Add a new user
-        return View::make('user.new');
-    }
+	public function get_add()
+	{
+		// PAGE - Add a new category
+		return View::make('category.new');
+	}
 
-    public function post_add()
-    {
-        // HANDLE - Add a new user
-        $input = Input::only($this->input_accepts);
-        Input::flash();
-        $rules = $this->validation_rules;
-        $rules['password'] .= '|required';
-        $rules['password_confirmation'] .= '|required';
-        $validation = Validator::make($input, $rules);
+	public function post_add()
+	{
+		// HANDLE - Add a new category
+		$input = Input::only(Category::$accessible);
+		Input::flash();
+		$validation = Validator::make($input, Category::$validation_rules);
 
-        if($validation->fails()) {
-            return Redirect::back()->with_input()->with_errors($validation);
-        }
+		if($validation->fails()) {
+			return Redirect::back()->with_input()->with_errors($validation);
+		}
 
-        // Add user to database
-        $user = User::create_user($input);
+		// Add category to database
+		$category = Category::create_category($input);
 
-        return Redirect::to('users')->with('status', 'User '.$user->name.' has been saved!');
-    }
+		return Redirect::to('category.index')->with('status', 'Category '.$category->name.' has been saved!');
+	}
 
-    public function get_edit($user_id)
-    {
-        // PAGE - Edit an existing user
-        $user = User::find($user_id);
+	public function get_edit($category_id)
+	{
+		// PAGE - Edit an existing category
+		$category = Category::find($category_id);
 
-        if(!$user) {
-            return Response::error('404');
-        }
+		if(!$category) {
+			return Response::error('404');
+		}
 
-        return View::make('user.edit')->with('user', $user);
-    }
+		return View::make('category.edit')->with('category', $category);
+	}
 
-    public function post_edit($user_id)
-    {
-        // HANDLE - Edit an existing user
-        $user = User::find($user_id);
-        $input = Input::only($this->input_accepts);
-        Input::flash();
-        $rules = $this->validation_rules;
-        $rules['email'] .= ','.$user_id;
-        $validation = Validator::make($input, $rules);
+	public function post_edit($category_id)
+	{
+		// HANDLE - Edit an existing category
+		$category = Category::find($category_id);
+		$input = Input::only(Category::$accessible);
+		Input::flash();
+		$validation = Validator::make($input, Category::$validation_rules);
 
-        if($validation->fails()) {
-            return Redirect::back()->with_input()->with_errors($validation)->with('user', $user);
-        }
+		if($validation->fails()) {
+			return Redirect::back()->with_input()->with_errors($validation)->with('category', $category);
+		}
 
-        // Update user database entry
-        $user->update_user($input);
+		// Update category database entry
+		$category->update_category($input);
 
-        return Redirect::to('users')->with('status', 'Your changes to user '.$user->name.' have been saved!');
-    }
+		return Redirect::to('category.index')->with('status', 'Your changes to category '.$category->name.' have been saved!');
+	}
 
-    public function get_delete($user_id)
-    {
-        // PAGE - Confirm user deletion
-        $user = User::find($user_id);
+	public function get_delete($category_id)
+	{
+		// PAGE - Confirm category deletion
+		$category = Category::find($category_id);
 
-        if(!$user) {
-            return Response::error('404');
-        }
+		if(!$category) {
+			return Response::error('404');
+		}
 
-        return View::make('user.delete')->with('user', $user);
-    }
+		return View::make('category.delete')->with('category', $category);
+	}
 
-    public function post_delete($user_id)
-    {
-        // HANDLE - Delete the user if deletion is confirmed
-        $input = Input::only(array('delete-confirm'));
-        $rules = array('delete-confirm' => 'accepted');
-        $validation = Validator::make($input, $rules);
-        $user = User::find($user_id);
+	public function post_delete($category_id)
+	{
+		// HANDLE - Delete the category if deletion is confirmed
+		$input = Input::only(array('delete-confirm'));
+		$rules = array('delete-confirm' => 'accepted');
+		$validation = Validator::make($input, $rules);
+		$category = Category::find($category_id);
 
-        if($validation->fails()) {
-            return Redirect::back()->with_errors($validation)->with('user', $user);
-        }
-        
-        // Now delete the user
-        $user_name = $user->name;
-        $user->delete();
-        return Redirect::to('users')->with('status', 'User '.$user_name.' has been deleted.');
-    }
+		if($validation->fails()) {
+			return Redirect::back()->with_errors($validation)->with('category', $category);
+		}
+		
+		// Now delete the category
+		$category_name = $category->name;
+		$category->delete();
+		return Redirect::to('category.index')->with('status', 'Category '.$category_name.' has been deleted.');
+	}
 }

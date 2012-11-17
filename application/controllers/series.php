@@ -5,102 +5,109 @@ class Series_Controller extends Base_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->filter('before', 'auth');
+        $this->filter('before', 'auth')->except(array('index, show'));
     }
 
     public function get_index()
     {
-        // PAGE - List of users
-        $users = User::order_by('email', 'asc')->get();
+        // PAGE - List of series
+        $series = Series::order_by('name', 'asc')->get();
 
-        return View::make('user.index')->with('users', $users);
+        return View::make('series.index')->with('series', $series);
+    }
+
+    public function get_show($series_slug)
+    {
+        // PAGE - Show a single series
+        $series = Series::find_by_slug($series_slug);
+
+        if(!$series) {
+            return Response::error('404');
+        }
+
+        return View::make('series.show')->with('series', $series);
     }
 
     public function get_add()
     {
-        // PAGE - Add a new user
-        return View::make('user.new');
+        // PAGE - Add a new series
+        return View::make('series.new');
     }
 
-    public function post_add()
+    public function series_add()
     {
-        // HANDLE - Add a new user
-        $input = Input::only($this->input_accepts);
+        // HANDLE - Add a new series
+        $input = Input::only(Series::$accessible);
         Input::flash();
-        $rules = $this->validation_rules;
-        $rules['password'] .= '|required';
-        $rules['password_confirmation'] .= '|required';
-        $validation = Validator::make($input, $rules);
+        $validation = Validator::make($input, Series::$validation_rules);
 
         if($validation->fails()) {
             return Redirect::back()->with_input()->with_errors($validation);
         }
 
-        // Add user to database
-        $user = User::create_user($input);
+        // Add series to database
+        $series = Series::create_series($input);
 
-        return Redirect::to('users')->with('status', 'User '.$user->name.' has been saved!');
+        return Redirect::to('series.index')->with('status', 'Series '.$series->title.' has been saved!');
     }
 
-    public function get_edit($user_id)
+    public function get_edit($series_slug)
     {
-        // PAGE - Edit an existing user
-        $user = User::find($user_id);
+        // PAGE - Edit an existing series
+        $series = Series::find_by_slug($series_slug);
 
-        if(!$user) {
+        if(!$series) {
             return Response::error('404');
         }
 
-        return View::make('user.edit')->with('user', $user);
+        return View::make('series.edit')->with('series', $series);
     }
 
-    public function post_edit($user_id)
+    public function series_edit($series_slug)
     {
-        // HANDLE - Edit an existing user
-        $user = User::find($user_id);
-        $input = Input::only($this->input_accepts);
+        // HANDLE - Edit an existing series
+        $series = Series::find_by_slug($series_slug);
+        $input = Input::only(Series::$accessible);
         Input::flash();
-        $rules = $this->validation_rules;
-        $rules['email'] .= ','.$user_id;
-        $validation = Validator::make($input, $rules);
+        $validation = Validator::make($input, Series::$validation_rules);
 
         if($validation->fails()) {
-            return Redirect::back()->with_input()->with_errors($validation)->with('user', $user);
+            return Redirect::back()->with_input()->with_errors($validation)->with('series', $series);
         }
 
-        // Update user database entry
-        $user->update_user($input);
+        // Update series database entry
+        $series->update_series($input);
 
-        return Redirect::to('users')->with('status', 'Your changes to user '.$user->name.' have been saved!');
+        return Redirect::to('series.index')->with('status', 'Your changes to series '.$series->title.' have been saved!');
     }
 
-    public function get_delete($user_id)
+    public function get_delete($series_slug)
     {
-        // PAGE - Confirm user deletion
-        $user = User::find($user_id);
+        // PAGE - Confirm series deletion
+        $series = Series::find_by_slug($series_slug);
 
-        if(!$user) {
+        if(!$series) {
             return Response::error('404');
         }
 
-        return View::make('user.delete')->with('user', $user);
+        return View::make('series.delete')->with('series', $series);
     }
 
-    public function post_delete($user_id)
+    public function series_delete($series_slug)
     {
-        // HANDLE - Delete the user if deletion is confirmed
+        // HANDLE - Delete the series if deletion is confirmed
         $input = Input::only(array('delete-confirm'));
         $rules = array('delete-confirm' => 'accepted');
         $validation = Validator::make($input, $rules);
-        $user = User::find($user_id);
+        $series = Series::find_by_slug($series_slug);
 
         if($validation->fails()) {
-            return Redirect::back()->with_errors($validation)->with('user', $user);
+            return Redirect::back()->with_errors($validation)->with('series', $series);
         }
         
-        // Now delete the user
-        $user_name = $user->name;
-        $user->delete();
-        return Redirect::to('users')->with('status', 'User '.$user_name.' has been deleted.');
+        // Now delete the series
+        $series_title = $series->title;
+        $series->delete();
+        return Redirect::to('series.index')->with('status', 'Series '.$series_title.' has been deleted.');
     }
 }
