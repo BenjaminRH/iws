@@ -1,6 +1,6 @@
-@layout('templates.main')
+@layout('layouts.main')
 
-@section('main-content')
+@section('content')
 	<div class="container">
 		<div class="row" style="text-align:center">
 			<h2>{{ __('main.contact') }}</h2>

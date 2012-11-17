@@ -25,6 +25,8 @@
 </head>
 <body>
 
+	{{ render('layouts.messages') }}
+	
 	<header class="row">
 		{{ render('layouts.header') }}
 	</header>

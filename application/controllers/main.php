@@ -18,8 +18,10 @@ class Main_Controller extends Base_Controller
 
 	public function get_index()
 	{
-		// PAGE - Home
-		return View::make('main.home');
+		// PAGE - Homepage - paginated list of recent posts
+		$posts = Post::order_by('created_at', 'desc')->get()->paginate(10);
+
+		return View::make('main.home')->with('posts', $posts);
 	}
 
 	public function get_contact()
