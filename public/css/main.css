@@ -353,3 +353,15 @@ h4.ribbon > span {
 .redactor_box {
 	margin-bottom: 20px;
 }
+
+/* -----------------------------------------
+   Forms
+----------------------------------------- */
+/* ===[ Fieldset ]=== */
+fieldset {
+	border-color: #4D4D4D;
+}
+
+fieldset legend {
+	background-color: transparent;
+}

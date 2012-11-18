@@ -19,27 +19,29 @@ class Users_Controller extends Base_Controller
     public function get_add()
     {
         // PAGE - Add a new user
-        return View::make('user.new');
+        $user = new User; // Initiate for cleaner form view setup
+        return View::make('user.new')->with('user', $user);
     }
 
     public function post_add()
     {
         // HANDLE - Add a new user
-        $input = Input::only($this->input_accepts);
+        $input = Input::only(User::$accessible);
         Input::flash();
-        $rules = $this->validation_rules;
+        $rules = User::$validation_rules;
         $rules['password'] .= '|required';
         $rules['password_confirmation'] .= '|required';
         $validation = Validator::make($input, $rules);
 
         if($validation->fails()) {
-            return Redirect::back()->with_input()->with_errors($validation);
+            $user = new User; // Initiate for cleaner form view setup
+            return Redirect::back()->with_input()->with_errors($validation)->with('user', $user);
         }
 
         // Add user to database
         $user = User::create_user($input);
 
-        return Redirect::to('users')->with('status', 'User '.$user->name.' has been saved!');
+        return Redirect::to('admin/users')->with('status', 'User '.$user->name.' has been saved!');
     }
 
     public function get_edit($user_id)
@@ -58,9 +60,9 @@ class Users_Controller extends Base_Controller
     {
         // HANDLE - Edit an existing user
         $user = User::find($user_id);
-        $input = Input::only($this->input_accepts);
+        $input = Input::only(User::$accessible);
         Input::flash();
-        $rules = $this->validation_rules;
+        $rules = User::$validation_rules;
         $rules['email'] .= ','.$user_id;
         $validation = Validator::make($input, $rules);
 
@@ -71,7 +73,7 @@ class Users_Controller extends Base_Controller
         // Update user database entry
         $user->update_user($input);
 
-        return Redirect::to('users')->with('status', 'Your changes to user '.$user->name.' have been saved!');
+        return Redirect::to('admin/users')->with('status', 'Your changes to user '.$user->name.' have been saved!');
     }
 
     public function get_delete($user_id)
@@ -101,6 +103,6 @@ class Users_Controller extends Base_Controller
         // Now delete the user
         $user_name = $user->name;
         $user->delete();
-        return Redirect::to('users')->with('status', 'User '.$user_name.' has been deleted.');
+        return Redirect::to('admin/users')->with('status', 'User '.$user_name.' has been deleted.');
     }
 }

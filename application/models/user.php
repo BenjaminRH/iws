@@ -47,7 +47,7 @@ class User extends Eloquent
 	public function update_user($input) {
 		$this->name = $input['name'];
 		$this->email = $input['email'];
-		if($input['password']) {
+		if($input['password'] && $input['password_confirmation']) {
 			$this->password = Hash::make($input['password']);
 		}
 		$this->save();
