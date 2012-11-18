@@ -18,18 +18,19 @@
 	<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet'>
 	
 	<!-- Included CSS Files (Compressed) -->
-	<link rel="stylesheet" href="css/foundation.min.css">
-	<link rel="stylesheet" href="css/main.css">
+	{{ HTML::style('css/foundation.min.css') }}
+	{{ HTML::style('css/main.css') }}
 
-	<script src="js/modernizr.foundation.js"></script>
+	<!-- Included JS Files (Compressed) -->
+	{{ HTML::script('js/modernizr.foundation.js') }}
+	{{ HTML::script('js/jquery-1.8.3.min.js') }}
 </head>
 <body>
-
-	{{ render('layouts.messages') }}
-	
 	<header class="row">
-		{{ render('layouts.header') }}
+		@include('layouts.header')
 	</header>
+
+	@include('layouts.messages')
 
 	<div class="row">
 		<div class="eight columns">
@@ -37,18 +38,18 @@
 		</div>
 
 		<div class="four columns sidebar">
-			{{ render('layouts.sidebar') }}
+			@include('layouts.sidebar')
 		</div>
 	</div>
 
 	<footer class="row">
-		{{ render('layouts.footer') }}
+		@include('layouts.footer')
 	</footer>
 	
 	<!-- Included JS Files (Compressed) -->
-	<script src="js/foundation.min.js"></script>
+	{{ HTML::script('js/foundation.min.js') }}
 	
 	<!-- Initialize JS Plugins -->
-	<script src="js/init.js"></script>
+	{{ HTML::script('js/init.js') }}
 </body>
 </html>

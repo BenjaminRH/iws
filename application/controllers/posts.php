@@ -11,7 +11,7 @@ class Posts_Controller extends Base_Controller
 	public function get_index()
 	{
 		// PAGE - List of posts
-		$posts = Post::order_by('name', 'asc')->get();
+		$posts = Post::order_by('title', 'asc')->get();
 
 		return View::make('post.index')->with('posts', $posts);
 	}
@@ -31,7 +31,8 @@ class Posts_Controller extends Base_Controller
 	public function get_add()
 	{
 		// PAGE - Add a new post
-		return View::make('post.new');
+		$post = new Post; // Initiate for cleaner form view setup
+		return View::make('post.new')->with('post', $post);
 	}
 
 	public function post_add()
@@ -42,7 +43,8 @@ class Posts_Controller extends Base_Controller
 		$validation = Validator::make($input, Post::$validation_rules);
 
 		if($validation->fails()) {
-			return Redirect::back()->with_input()->with_errors($validation);
+			$post = new Post; // Initiate for cleaner form view setup
+			return Redirect::back()->with_input()->with_errors($validation)->with('post', $post);
 		}
 
 		// Add post to database

@@ -37,6 +37,7 @@ Route::get('/', 'main@index');
 Route::get('home', function() {
 	return Redirect::to('/');
 });
+Route::get('about', 'main@about');
 Route::get('contact', 'main@contact');
 Route::post('contact', 'main@contact');
 

@@ -31,7 +31,7 @@ class Auth_Controller extends Base_Controller
 		$validation = Validator::make($input, $rules);
 		$credentials = array(
 			'username' => $input['email'],
-			'password' => $input['password'],
+			'password' => $input['password']
 		);
 
 		if($validation->fails()) {

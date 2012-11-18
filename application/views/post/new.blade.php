@@ -1,12 +1,6 @@
-<script src="js/nicEdit.js"></script>
-<script>
-	new nicEditor({
-		buttonList : [
-			'bold',
-			'italic',
-			'underline',
-			'strikeThrough',
-			'YouTube'
-		]
-	}).panelInstance('body');
-</script>
+@layout('layouts.main')
+
+@section('content')
+<h3>New post</h3>
+@include('post.form')
+@endsection

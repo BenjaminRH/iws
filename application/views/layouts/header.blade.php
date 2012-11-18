@@ -1,3 +1,3 @@
-<img src="img/logo.png" alt="Indie Web Series">
+{{ HTML::image('img/logo.png', 'Indie Web Series') }}
 
-{{ render('layouts.navigation') }}
+@include('layouts.navigation')

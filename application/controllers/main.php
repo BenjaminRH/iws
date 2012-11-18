@@ -18,10 +18,16 @@ class Main_Controller extends Base_Controller
 
 	public function get_index()
 	{
-		// PAGE - Homepage - paginated list of recent posts
-		$posts = Post::order_by('created_at', 'desc')->get()->paginate(10);
+		// PAGE - Homepage - list of recent posts
+		$posts = Post::order_by('created_at', 'desc')->take(10)->get();
 
 		return View::make('main.home')->with('posts', $posts);
+	}
+
+	public function get_about()
+	{
+		// PAGE - About us
+		return View::make('main.about');
 	}
 
 	public function get_contact()
@@ -34,6 +40,7 @@ class Main_Controller extends Base_Controller
 	{
 		// HANDLE - Contact us
 		$input = Input::only($this->input_accepts);
+		Input::flash();
 		$rules = $this->contact_rules;
 		$validation = Validator::make($input, $rules);
 

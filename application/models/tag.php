@@ -12,12 +12,12 @@ class Tag extends Eloquent
 	public static $validation_rules = array('name' => 'required');
 
 	// Tag has_many_and_belongs_to post
-	public function tags() {
+	public function posts() {
 		return $this->has_many_and_belongs_to('Post');
 	}
 
 	// Tag has_many_and_belongs_to series
-	public function tags() {
+	public function series() {
 		return $this->has_many_and_belongs_to('Series');
 	}
 

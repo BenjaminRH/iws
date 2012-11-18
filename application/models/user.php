@@ -20,6 +20,11 @@ class User extends Eloquent
 		'password' => 'min:5',
 		'password_confirmation' => 'same:password'
 	);
+
+	// User has_many posts
+	public function posts() {
+		return $this->has_many('Post');
+	}
 	
 	// Find a user by email address
 	public static function find_by_email($email)

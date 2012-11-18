@@ -1,56 +1,55 @@
 @layout('layouts.main')
 
 @section('content')
-	<div class="container">
-		<div class="row" style="text-align:center">
-			<h2>{{ __('main.contact') }}</h2>
-		</div>
-	</div>
-	<div class="container">
-		<div class="contact-form">
-			@if (Session::has('status'))
-				{{ Alert::success(Session::get('status')) }}
-			@elseif (Session::has('status-error'))
-				{{ Alert::error(Session::get('status-error')) }}
+<h3>Contact us</h3>
+
+{{ Form::open() }}
+	{{ Form::token() }}
+
+	{{-- Name field --}}
+	<div class="row">
+		<div class="eight columns">
+			{{ Form::label('name', 'Name', array('class' => ($errors->has('name') ? 'error' : '') )) }}
+			{{ Form::text('name', Input::old('name'), array('class' => ($errors->has('name') ? ' error' : '') )) }}
+			@if($errors->has('name'))
+			<small class="error">Please enter your name</small>
 			@endif
-			<div>
-				{{ Form::vertical_open() }}
-					{{ Form::token() }}
-					<?php echo 
-						Form::control_group(
-							Form::label('name', __('main.name')),
-							Form::text('name', Input::old('name')),
-							($errors->has('name') ? 'error' : ''),
-							Form::block_help($errors->first('name'))
-						);
-					?>
-					<?php echo 
-						Form::control_group(
-							Form::label('email', __('main.email')),
-							Form::text('email', Input::old('email')),
-							($errors->has('email') ? 'error' : ''),
-							Form::block_help($errors->first('email'))
-						);
-					?>
-					<?php echo 
-						Form::control_group(
-							Form::label('subject', __('main.subject')),
-							Form::xlarge_text('subject', Input::old('subject')),
-							($errors->has('subject') ? 'error' : ''),
-							Form::block_help($errors->first('subject'))
-						);
-					?>
-					<?php echo 
-						Form::control_group(
-							Form::label('message', __('main.message')),
-							Form::xlarge_textarea('message', Input::old('message'), array('rows'=>5)),
-							($errors->has('message') ? 'error' : ''),
-							Form::block_help($errors->first('message'))
-						);
-					?>
-					{{ Form::submit(__('main.send')) }}
-				{{ Form::close() }}
-			</div>
 		</div>
 	</div>
+
+	{{-- Email field --}}
+	<div class="row">
+		<div class="eight columns">
+			{{ Form::label('email', 'Email', array('class' => ($errors->has('name') ? 'error' : '') )) }}
+			{{ Form::text('email', Input::old('email'), array('class' => ($errors->has('email') ? ' error' : '') )) }}
+			@if($errors->has('email'))
+			<small class="error">Please enter a valid email address</small>
+			@endif
+		</div>
+	</div>
+
+	{{-- Subject field --}}
+	<div class="row">
+		<div class="twelve columns">
+			{{ Form::label('subject', 'Subject', array('class' => ($errors->has('name') ? 'error' : '') )) }}
+			{{ Form::text('subject', Input::old('subject'), array('class' => ($errors->has('subject') ? ' error' : '') )) }}
+			@if($errors->has('subject'))
+			<small class="error">Please enter a subject</small>
+			@endif
+		</div>
+	</div>
+
+	{{-- Message field --}}
+	<div class="row">
+		<div class="twelve columns">
+			{{ Form::label('message', 'Message', array('class' => ($errors->has('name') ? 'error' : '') )) }}
+			{{ Form::textarea('message', Input::old('message'), array('class' => ($errors->has('message') ? ' error' : '') )) }}
+			@if($errors->has('message'))
+			<small class="error">Please enter a message</small>
+			@endif
+		</div>
+	</div>
+
+	{{ Form::submit('Send', array('class' => 'button')) }}
+{{ Form::close() }}
 @endsection
