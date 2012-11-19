@@ -171,3 +171,25 @@ if ( ! Request::cli() and Config::get('session.driver') !== '')
 {
 	Session::load();
 }
+
+/*
+|--------------------------------------------------------------------------
+| Register Custom Validators
+|--------------------------------------------------------------------------
+|
+| Laravel provides a number of powerful validators. However, when you need
+| to create your own, register them here.
+|
+*/
+
+/**
+ * Validate that an attribute contains only lowercase alpha-numeric characters, and dashes.
+ *
+ * @param  string  $attribute
+ * @param  mixed   $value
+ * @return bool
+ */
+Validator::register('slug', function($attribute, $value)
+{
+	return preg_match('/^([a-z0-9-])+$/', $value);
+});

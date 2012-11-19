@@ -64,6 +64,7 @@ return array(
 		"file"    => "The :attribute must be :size kilobyte.",
 		"string"  => "The :attribute must be :size characters.",
 	),
+	"slug"           => "The :attribute may only contain lowercase letters, numbers, and dashes.",
 	"unique"         => "The :attribute has already been taken.",
 	"url"            => "The :attribute format is invalid.",
 
