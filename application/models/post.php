@@ -2,17 +2,25 @@
 
 class Post extends Eloquent
 {
-	// Disable timestamps
-	public static $timestamps = false;
+	// Enable timestamps
+	public static $timestamps = true;
 
 	// Acceptable inputs
-	public static $accessible = array('title', 'slug', 'body');
+	public static $accessible = array(
+		'title',
+		'slug',
+		'body',
+		'category'//,
+		//'tags'
+	);
 
 	// Validation rules
 	public static $validation_rules = array(
 		'title' => 'required',
-		'slug' => 'required',
-		'body' => 'required|min:100'
+		'slug' => 'required|slug',
+		'body' => 'required|min:100',
+		'category' => 'required|integer'//,
+		//'tags' => 'required'
 	);
 
 	// Post belongs_to user
@@ -42,6 +50,9 @@ class Post extends Eloquent
 		$post->title = $input['title'];
 		$post->slug = $input['slug'];
 		$post->body = $input['body'];
+		$post->category_id = $input['category'];
+		//$post->tags()->sync($input['tags']);
+		$post->user_id = Auth::user()->id;
 		$post->save();
 
 		return $post;
@@ -52,6 +63,8 @@ class Post extends Eloquent
 		$this->title = $input['title'];
 		$this->slug = $input['slug'];
 		$this->body = $input['body'];
+		$this->category_id = $input['category'];
+		//$post->tags()->sync($input['tags']);
 		$this->save();
 
 		return $this;

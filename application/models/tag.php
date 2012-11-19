@@ -21,6 +21,16 @@ class Tag extends Eloquent
 		return $this->has_many_and_belongs_to('Series');
 	}
 
+	// Return all tags in array as id=>name
+	static function data_array() {
+		$results = [];
+		foreach(Tag::get() as $tag)
+		{
+			$results[$tag->id] = $tag->name;
+		}
+		return $results;
+	}
+
 	// Create a tag
 	public static function create_tag($input) {
 		$tag = new Tag;

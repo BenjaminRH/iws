@@ -1,24 +1,22 @@
 @layout('layouts.main')
 
 @section('content')
-	@foreach($posts as $post)
-		<article class="post-teaser">
-			<aside class="pt-infobox">
-				<ul>
-					<li class="category">{{ $post->category()->name }}</li>
-					<li class="date">{{ $post->date }}</li>
-				</ul>
-			</aside>
+<h3>Home</h3>
 
-			<a href="posts/{{ $post->slug }}"><h4>{{ $post->title }}</h4></a>
-			<hr>
-			{{ $post->body }}
+@foreach($posts as $post)
+<article class="post-teaser">
+	<aside class="pt-infobox">
+		<ul>
+			<li class="category">{{ $post->category->name }}</li>
+			<li class="date">{{ $post->created_at }}</li>
+		</ul>
+	</aside>
 
-			<ul class="tags">
-				@foreach($post->tags() as $tag)
-					<li><a href="tags/{{ $tag->slug }}">{{ $tag->name }}}</a></li>
-				@endforeach
-			</ul>
-		</article>
-	@endforeach
+	<h4>{{ HTML::link('posts/'.$post->slug, $post->title) }}</h4>
+	<hr>
+	{{ Str::limit($post->body, 300) . " " . HTML::link('posts/'.$post->slug, 'Read more') }}
+
+	{{--<ul class="tags">--}}
+</article>
+@endforeach
 @endsection

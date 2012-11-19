@@ -16,6 +16,16 @@ class Category extends Eloquent
 		return $this->has_many('Post');
 	}
 
+	// Return all categories in array as id=>name
+	static function data_array() {
+		$results = [];
+		foreach(Category::get() as $category)
+		{
+			$results[$category->id] = $category->name;
+		}
+		return $results;
+	}
+
 	// Create a category
 	public static function create_category($input) {
 		$category = new Category;

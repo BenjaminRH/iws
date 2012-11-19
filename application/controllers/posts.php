@@ -5,7 +5,7 @@ class Posts_Controller extends Base_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->filter('before', 'auth')->except(array('index, show'));
+		$this->filter('before', 'auth')->only(array('add', 'edit', 'delete'));
 	}
 
 	public function get_index()
@@ -50,7 +50,7 @@ class Posts_Controller extends Base_Controller
 		// Add post to database
 		$post = Post::create_post($input);
 
-		return Redirect::to('post.index')->with('status', 'Post '.$post->title.' has been saved!');
+		return Redirect::to('posts/'.$post->slug)->with('status', 'Post '.$post->title.' has been saved!');
 	}
 
 	public function get_edit($post_slug)
@@ -80,7 +80,7 @@ class Posts_Controller extends Base_Controller
 		// Update post database entry
 		$post->update_post($input);
 
-		return Redirect::to('post.index')->with('status', 'Your changes to post '.$post->title.' have been saved!');
+		return Redirect::to('posts/'.$post->slug)->with('status', 'Your changes to post '.$post->title.' have been saved!');
 	}
 
 	public function get_delete($post_slug)
@@ -110,6 +110,6 @@ class Posts_Controller extends Base_Controller
 		// Now delete the post
 		$post_title = $post->title;
 		$post->delete();
-		return Redirect::to('post.index')->with('status', 'Post '.$post_title.' has been deleted.');
+		return Redirect::to('posts')->with('status', 'Post '.$post_title.' has been deleted.');
 	}
 }
