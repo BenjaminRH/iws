@@ -1,1 +1,8 @@
-This is the /home/benjamin/Desktop/iws_laravel/application/views/tag/new.blade.php view
+@layout('layouts.main')
+
+@section('content')
+{{ HTML::link('admin/tags', '&crarr; back to tags') }}
+
+<h3>New tag</h3>
+@include('tag.form')
+@endsection

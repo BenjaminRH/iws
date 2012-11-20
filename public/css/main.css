@@ -98,7 +98,7 @@ hr {
 }
 
 /* ===[ Get rid of bottom border for links not in a body of text ]=== */
-.navigation li a, .tabs dd a, li a, .post a:first-child {
+.navigation li a, .tabs dd a, li a {
 	border-bottom: none;
 }
 

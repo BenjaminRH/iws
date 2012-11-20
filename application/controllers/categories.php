@@ -19,7 +19,8 @@ class Categories_Controller extends Base_Controller
 	public function get_add()
 	{
 		// PAGE - Add a new category
-		return View::make('category.new');
+		$category = new Category; // Initiate for cleaner form view setup
+		return View::make('category.new')->with('category', $category);
 	}
 
 	public function post_add()
@@ -30,13 +31,14 @@ class Categories_Controller extends Base_Controller
 		$validation = Validator::make($input, Category::$validation_rules);
 
 		if($validation->fails()) {
-			return Redirect::back()->with_input()->with_errors($validation);
+			$category = new Category; // Initiate for cleaner form view setup
+			return Redirect::back()->with_input()->with_errors($validation)->with('category', $category);
 		}
 
 		// Add category to database
 		$category = Category::create_category($input);
 
-		return Redirect::to('category.index')->with('status', 'Category '.$category->name.' has been saved!');
+		return Redirect::to('admin/categories')->with('status', 'Category '.$category->name.' has been saved!');
 	}
 
 	public function get_edit($category_id)
@@ -57,7 +59,9 @@ class Categories_Controller extends Base_Controller
 		$category = Category::find($category_id);
 		$input = Input::only(Category::$accessible);
 		Input::flash();
-		$validation = Validator::make($input, Category::$validation_rules);
+		$rules = Category::$validation_rules;
+		$rules['name'] .= ',' . $category_id;
+		$validation = Validator::make($input, $rules);
 
 		if($validation->fails()) {
 			return Redirect::back()->with_input()->with_errors($validation)->with('category', $category);
@@ -66,7 +70,7 @@ class Categories_Controller extends Base_Controller
 		// Update category database entry
 		$category->update_category($input);
 
-		return Redirect::to('category.index')->with('status', 'Your changes to category '.$category->name.' have been saved!');
+		return Redirect::to('admin/categories')->with('status', 'Your changes to category '.$category->name.' have been saved!');
 	}
 
 	public function get_delete($category_id)
@@ -78,7 +82,7 @@ class Categories_Controller extends Base_Controller
 			return Response::error('404');
 		}
 
-		return View::make('category.delete')->with('category', $category);
+		return View::make('layouts.delete')->with('cancel_path', 'admin/categories');
 	}
 
 	public function post_delete($category_id)
@@ -90,12 +94,12 @@ class Categories_Controller extends Base_Controller
 		$category = Category::find($category_id);
 
 		if($validation->fails()) {
-			return Redirect::back()->with_errors($validation)->with('category', $category);
+			return Redirect::back()->with_errors($validation)->with('cancel_path', 'admin/categories');
 		}
 		
 		// Now delete the category
 		$category_name = $category->name;
 		$category->delete();
-		return Redirect::to('category.index')->with('status', 'Category '.$category_name.' has been deleted.');
+		return Redirect::to('admin/categories')->with('status', 'Category '.$category_name.' has been deleted.');
 	}
 }

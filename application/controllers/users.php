@@ -85,7 +85,7 @@ class Users_Controller extends Base_Controller
             return Response::error('404');
         }
 
-        return View::make('user.delete')->with('user', $user);
+        return View::make('layouts.delete')->with('cancel_path', 'admin/users');
     }
 
     public function post_delete($user_id)
@@ -97,7 +97,7 @@ class Users_Controller extends Base_Controller
         $user = User::find($user_id);
 
         if($validation->fails()) {
-            return Redirect::back()->with_errors($validation)->with('user', $user);
+            return Redirect::back()->with_errors($validation)->with('cancel_path', 'admin/users');
         }
         
         // Now delete the user

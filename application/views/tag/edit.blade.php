@@ -1,1 +1,8 @@
-This is the /home/benjamin/Desktop/iws_laravel/application/views/tag/edit.blade.php view
+@layout('layouts.main')
+
+@section('content')
+{{ HTML::link('admin/tags', '&crarr; back to tags') }}
+
+<h3>Edit tag {{ $tag->name }}</h3>
+@include('tag.form')
+@endsection

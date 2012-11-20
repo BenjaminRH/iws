@@ -1,1 +1,2 @@
-This is the /home/benjamin/Desktop/iws_laravel/application/views/tag/show.blade.php view
+<h1>Under construction</h1>
+<p>This will most likely be the tag name and the posts (and series?) tagged with this tag. Maybe. Very possibly a description field, although I suspect not? And a slug field makes a lot of sense, for things like "tags/bob" or filter by tag etc.?</p>

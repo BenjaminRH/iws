@@ -92,7 +92,7 @@ class Posts_Controller extends Base_Controller
 			return Response::error('404');
 		}
 
-		return View::make('post.delete')->with('post', $post);
+		return View::make('layouts.delete')->with('cancel_path', 'posts/'.$post_slug);
 	}
 
 	public function post_delete($post_slug)
@@ -104,7 +104,7 @@ class Posts_Controller extends Base_Controller
 		$post = Post::find_by_slug($post_slug);
 
 		if($validation->fails()) {
-			return Redirect::back()->with_errors($validation)->with('post', $post);
+			return Redirect::back()->with_errors($validation)->with('cancel_path', 'posts/'.$post_slug);
 		}
 		
 		// Now delete the post

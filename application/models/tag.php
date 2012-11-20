@@ -9,7 +9,7 @@ class Tag extends Eloquent
 	public static $accessible = array('name');
 
 	// Validation rules
-	public static $validation_rules = array('name' => 'required');
+	public static $validation_rules = array('name' => 'required|unique:tags,name');
 
 	// Tag has_many_and_belongs_to post
 	public function posts() {

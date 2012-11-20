@@ -17,7 +17,7 @@
 	<h4>
 		{{ $post->title }} 
 		@if(Auth::check())
-		({{ HTML::link('admin/posts/'.$post->slug.'/edit', 'edit') }})
+		({{ HTML::link('admin/posts/'.$post->slug.'/edit', 'edit') }}/{{ HTML::link('admin/posts/'.$post->slug.'/delete', 'delete') }})
 		@endif
 	</h4>
 	<hr>

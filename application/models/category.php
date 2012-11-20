@@ -9,7 +9,7 @@ class Category extends Eloquent
 	public static $accessible = array('name');
 
 	// Validation rules
-	public static $validation_rules = array('name' => 'required');
+	public static $validation_rules = array('name' => 'required|unique:categories,name');
 
 	// Category has_many posts
 	public function posts() {
@@ -29,7 +29,7 @@ class Category extends Eloquent
 	// Create a category
 	public static function create_category($input) {
 		$category = new Category;
-		$category->name = $input['name'];
+		$category->name = Str::title($input['name']);
 		$category->save();
 
 		return $category;
@@ -37,7 +37,7 @@ class Category extends Eloquent
 
 	// Update a category
 	public function update_category($input) {
-		$this->name = $input['name'];
+		$this->name = Str::title($input['name']);
 		$this->save();
 
 		return $this;

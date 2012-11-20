@@ -19,7 +19,8 @@ class Tags_Controller extends Base_Controller
 	public function get_add()
 	{
 		// PAGE - Add a new tag
-		return View::make('tag.new');
+		$tag = new Tag; // Initiate for cleaner form view setup
+		return View::make('tag.new')->with('tag', $tag);
 	}
 
 	public function post_add()
@@ -30,13 +31,14 @@ class Tags_Controller extends Base_Controller
 		$validation = Validator::make($input, Tag::$validation_rules);
 
 		if($validation->fails()) {
-			return Redirect::back()->with_input()->with_errors($validation);
+			$tag = new Tag; // Initiate for cleaner form view setup
+			return Redirect::back()->with_input()->with_errors($validation)->with('tag', $tag);
 		}
 
 		// Add tag to database
 		$tag = Tag::create_tag($input);
 
-		return Redirect::to('tag.index')->with('status', 'Tag '.$tag->name.' has been saved!');
+		return Redirect::to('admin/tags')->with('status', 'Tag '.$tag->name.' has been saved!');
 	}
 
 	public function get_edit($tag_id)
@@ -57,7 +59,9 @@ class Tags_Controller extends Base_Controller
 		$tag = Tag::find($tag_id);
 		$input = Input::only(Tag::$accessible);
 		Input::flash();
-		$validation = Validator::make($input, Tag::$validation_rules);
+		$rules = Tag::$validation_rules;
+		$rules['name'] .= ',' . $tag_id;
+		$validation = Validator::make($input, $rules);
 
 		if($validation->fails()) {
 			return Redirect::back()->with_input()->with_errors($validation)->with('tag', $tag);
@@ -66,7 +70,7 @@ class Tags_Controller extends Base_Controller
 		// Update tag database entry
 		$tag->update_tag($input);
 
-		return Redirect::to('tag.index')->with('status', 'Your changes to tag '.$tag->name.' have been saved!');
+		return Redirect::to('admin/tags')->with('status', 'Your changes to tag '.$tag->name.' have been saved!');
 	}
 
 	public function get_delete($tag_id)
@@ -78,7 +82,7 @@ class Tags_Controller extends Base_Controller
 			return Response::error('404');
 		}
 
-		return View::make('tag.delete')->with('tag', $tag);
+		return View::make('layouts.delete')->with('cancel_path', 'admin/tags');
 	}
 
 	public function post_delete($tag_id)
@@ -90,12 +94,12 @@ class Tags_Controller extends Base_Controller
 		$tag = Tag::find($tag_id);
 
 		if($validation->fails()) {
-			return Redirect::back()->with_errors($validation)->with('tag', $tag);
+			return Redirect::back()->with_errors($validation)->with('cancel_path', 'admin/tags');
 		}
 		
 		// Now delete the tag
 		$tag_name = $tag->name;
 		$tag->delete();
-		return Redirect::to('tag.index')->with('status', 'Tag '.$tag_name.' has been deleted.');
+		return Redirect::to('admin/tags')->with('status', 'Tag '.$tag_name.' has been deleted.');
 	}
 }

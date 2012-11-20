@@ -1,1 +1,2 @@
-This is the /home/benjamin/Desktop/iws_laravel/application/views/category/show.blade.php view
+<h1>Under construction</h1>
+<p>This will most likely be the category name and the posts tagged with this category. Maybe. What about adding a description field? And a slug field?</p>
