@@ -27,7 +27,7 @@
 	<div class="row" style="margin-bottom:12px">
 		<div class="eight columns">
 			{{ Form::label('category', 'Category', array('class' => ($errors->has('category') ? 'error' : '') )) }}
-			{{ Form::select('category', Category::data_array(), Input::old('category', $post->category_id), array('class' => ($errors->has('category') ? ' error' : '') )) }}
+			{{ Form::select('category', Category::data_array(), Input::old('category', $post->category_id), array('class' => 'chzn-select' . ($errors->has('category') ? ' error' : '') )) }}
 			@if($errors->has('category'))
 			<small style="margin-top:1px" class="error">{{ $errors->first('category') }}</small>
 			@endif
