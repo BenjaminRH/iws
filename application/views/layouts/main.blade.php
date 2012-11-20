@@ -26,29 +26,35 @@
 	{{ HTML::script('js/jquery-1.8.3.min.js') }}
 </head>
 <body>
-	<header class="row">
-		@include('layouts.header')
-	</header>
+	<div class="page-section page-section-top">
+		<header class="row">
+			@include('layouts.header')
+		</header>
+	</div>
 
-	@include('layouts.messages')
+	<div class="page-section page-section-main">
+		<div class="row">
+			@include('layouts.messages')
+			
+			<div class="eight columns">
+				@yield('content')
+			</div>
 
-	<div class="row">
-		<div class="eight columns">
-			@yield('content')
-		</div>
-
-		<div class="four columns sidebar">
-			@include('layouts.sidebar')
+			<div class="four columns sidebar">
+				@include('layouts.sidebar')
+			</div>
 		</div>
 	</div>
 
-	<footer class="row">
-		@include('layouts.footer')
-	</footer>
-	
+	<div class="page-section page-section-bottom">
+		<footer class="row">
+			@include('layouts.footer')
+		</footer>
+	</div>
+
 	<!-- Included JS Files (Compressed) -->
 	{{ HTML::script('js/foundation.min.js') }}
-	
+
 	<!-- Initialize JS Plugins -->
 	{{ HTML::script('js/init.js') }}
 </body>

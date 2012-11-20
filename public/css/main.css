@@ -2,12 +2,25 @@
 	 Main Styles
 ----------------------------------------- */
 body {
-	background-color: #EEEEEE;
-	background-image: url('../img/bg.png');
-	background-repeat: repeat;
-	background-position: left top;
-	background-attachment: fixed;
+	background-color: #BBBBBB;
 	font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+}
+
+/* ===[ Page sections ]=== */
+.page-section {
+	padding: 30px 0;
+}
+
+.page-section-top {
+	background-color: #007FA9;
+}
+
+.page-section-main {
+	background-color: #EEEEEE;
+}
+
+.page-section-bottom {
+	background-color: #BBBBBB;
 }
 
 /* ===[ Selection colors ]=== */
@@ -69,18 +82,23 @@ hr {
 /* -----------------------------------------
 	 Navbar
 ----------------------------------------- */
-.nav-bar {
-	text-align: left;
-	border-top-right-radius: 20px;
-	border-bottom-right-radius: 20px;
+.nav-container {
+	padding-top: 30px;
 }
 
-.nav-bar .flyout li {
-	border-color: #98CB00;
+.navigation li a {
+	font-size: 1.1em;
+	color: #EEEEEE;
+	padding: 2px 12px;
+	border-radius: 7px;
+}
+
+.navigation li.active a, .navigation li a:hover {
+	background-color: #98CB00;
 }
 
 /* ===[ Get rid of bottom border for links not in a body of text ]=== */
-.nav-bar li a, .tabs dd a, li a, .post a:first-child {
+.navigation li a, .tabs dd a, li a, .post a:first-child {
 	border-bottom: none;
 }
 
@@ -89,7 +107,6 @@ hr {
 ----------------------------------------- */
 header {
 	text-align: center;
-	padding-top: 30px;
 }
 
 /* -----------------------------------------
@@ -171,7 +188,6 @@ header {
 ----------------------------------------- */
 footer {
 	text-align: center;
-	margin-top: 20px;
 }
 
 /* -----------------------------------------

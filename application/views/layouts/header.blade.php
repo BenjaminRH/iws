@@ -1,3 +1,7 @@
-{{ HTML::image('img/logo.png', 'Indie Web Series') }}
+<div class="six columns">
+	{{ HTML::image('img/logo.png', 'Indie Web Series') }}
+</div>
 
-@include('layouts.navigation')
+<div class="five columns nav-container">
+	@include('layouts.navigation')
+</div>
