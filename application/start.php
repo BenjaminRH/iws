@@ -193,3 +193,6 @@ Validator::register('slug', function($attribute, $value)
 {
 	return preg_match('/^([a-z0-9-])+$/', $value);
 });
+
+// Disable timestamps in pivot tables
+Laravel\Database\Eloquent\Pivot::$timestamps = false;

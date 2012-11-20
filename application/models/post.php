@@ -10,8 +10,8 @@ class Post extends Eloquent
 		'title',
 		'slug',
 		'body',
-		'category'//,
-		//'tags'
+		'category',
+		'tags'
 	);
 
 	// Validation rules
@@ -19,8 +19,8 @@ class Post extends Eloquent
 		'title' => 'required',
 		'slug' => 'required|slug',
 		'body' => 'required|min:100',
-		'category' => 'required|integer'//,
-		//'tags' => 'required'
+		'category' => 'required|integer',
+		'tags' => 'required'
 	);
 
 	// Post belongs_to user
@@ -51,7 +51,7 @@ class Post extends Eloquent
 		$post->slug = $input['slug'];
 		$post->body = $input['body'];
 		$post->category_id = $input['category'];
-		//$post->tags()->sync($input['tags']);
+		$post->tags()->sync($input['tags']);
 		$post->user_id = Auth::user()->id;
 		$post->save();
 
@@ -64,7 +64,7 @@ class Post extends Eloquent
 		$this->slug = $input['slug'];
 		$this->body = $input['body'];
 		$this->category_id = $input['category'];
-		//$post->tags()->sync($input['tags']);
+		$this->tags()->sync($input['tags']);
 		$this->save();
 
 		return $this;

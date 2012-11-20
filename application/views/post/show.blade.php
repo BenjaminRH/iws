@@ -23,6 +23,10 @@
 	<hr>
 	{{ $post->body }}
 
-	{{--<ul class="tags">--}}
+	<ul class="tags">
+	@foreach($post->tags as $tag)
+		<li><a href="#">{{ $tag->name }}</a></li>
+	@endforeach
+	</ul>
 </article>
 @endsection

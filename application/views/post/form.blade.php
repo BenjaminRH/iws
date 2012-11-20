@@ -27,9 +27,20 @@
 	<div class="row" style="margin-bottom:12px">
 		<div class="eight columns">
 			{{ Form::label('category', 'Category', array('class' => ($errors->has('category') ? 'error' : '') )) }}
-			{{ Form::select('category', Category::data_array(), Input::old('category', $post->category_id), array('class' => 'chzn-select' . ($errors->has('category') ? ' error' : '') )) }}
+			{{ Form::select('category', Category::data_array(), Input::old('category', $post->category_id), array('class' => 'chzn-select' . ($errors->has('category') ? ' error' : ''), 'data-placeholder' => 'Select a category' )) }}
 			@if($errors->has('category'))
 			<small style="margin-top:1px" class="error">{{ $errors->first('category') }}</small>
+			@endif
+		</div>
+	</div>
+
+	{{-- Tags field --}}
+	<div class="row" style="margin-bottom:12px">
+		<div class="eight columns">
+			{{ Form::label('tags', 'Tags', array('class' => ($errors->has('tags') ? 'error' : '') )) }}
+			{{ Form::select('tags[]', Tag::data_array(), Input::old('tags', Tag::id_array($post->tags)), array('multiple' => 'multiple', 'class' => 'chzn-select' . ($errors->has('tags') ? ' error' : ''), 'data-placeholder' => 'Select tags' )) }}
+			@if($errors->has('tags'))
+			<small style="margin-top:1px" class="error">{{ $errors->first('tags') }}</small>
 			@endif
 		</div>
 	</div>

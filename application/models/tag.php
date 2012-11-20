@@ -31,6 +31,16 @@ class Tag extends Eloquent
 		return $results;
 	}
 
+	// Return all tag ids in passed array of models
+	static function id_array($models) {
+		$results = [];
+		foreach($models as $tag)
+		{
+			array_push($results, $tag->id);
+		}
+		return $results;
+	}
+
 	// Create a tag
 	public static function create_tag($input) {
 		$tag = new Tag;

@@ -21,7 +21,11 @@
 	<hr>
 	{{ Str::limit($post->body, 300) . " " . HTML::link('posts/'.$post->slug, 'Read more') }}
 
-	{{--<ul class="tags">--}}
+	<ul class="tags">
+	@foreach($post->tags as $tag)
+		<li><a href="#">{{ $tag->name }}</a></li>
+	@endforeach
+	</ul>
 </article>
 @endforeach
 @endsection
