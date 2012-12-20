@@ -1,6 +1,6 @@
 <div class="one-third column">
 	<div class="logo">
-		<a href="index.html">
+		<a href="http://indiewebseries.com">
 			{{ HTML::image('images/logo.png', 'Indie Web Series') }}
 		</a>
 	</div>

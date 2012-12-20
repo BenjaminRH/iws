@@ -55,7 +55,7 @@ class Main_Controller extends Base_Controller
 			// Construct the message
 			$message = Swift_Message::newInstance($input['subject'])
 			    ->setFrom(array($input['email']=>$input['name']))
-			    ->setTo(array('benjamin3harris@gmail.com'=>'Indie Web Series'))
+			    ->setTo(array('info@indiewebseries.com'=>'Indie Web Series'))
 			    ->setBody($input['message'],'text/plain');
 
 			// Send the email

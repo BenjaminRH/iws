@@ -21,7 +21,7 @@
 	{{ HTML::style('css/green.css') }}
 	
 	<!-- Layout Style -->
-	{{ HTML::style('css/wide.css') }}
+	{{ HTML::style('css/boxed.css') }}
 	
 	<!-- Small Icons -->
 	{{ HTML::style('css/halflings.css') }}
@@ -62,6 +62,8 @@
 
 </head>
 <body>
+
+	@section('main')
 
 	<div id="wrap" class="boxed">
 
@@ -115,6 +117,8 @@
 			(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
 		}());
 	</script>
+
+	@yield_section
 
 </body>
 </html>
