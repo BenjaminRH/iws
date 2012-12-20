@@ -13,14 +13,14 @@ class Categories_Controller extends Base_Controller
 		// PAGE - List of categories
 		$categories = Category::order_by('name', 'asc')->get();
 
-		return View::make('category.index')->with('categories', $categories);
+		return View::make('category.index')->with('categories', $categories)->with('page_title', 'Categories');
 	}
 
 	public function get_add()
 	{
 		// PAGE - Add a new category
 		$category = new Category; // Initiate for cleaner form view setup
-		return View::make('category.new')->with('category', $category);
+		return View::make('category.new')->with('category', $category)->with('page_title', 'Add a category');
 	}
 
 	public function post_add()
@@ -50,7 +50,7 @@ class Categories_Controller extends Base_Controller
 			return Response::error('404');
 		}
 
-		return View::make('category.edit')->with('category', $category);
+		return View::make('category.edit')->with('category', $category)->with('page_title', 'Edit category "'.$category->name.'"');
 	}
 
 	public function post_edit($category_id)
@@ -82,7 +82,12 @@ class Categories_Controller extends Base_Controller
 			return Response::error('404');
 		}
 
-		return View::make('layouts.delete')->with('cancel_path', 'admin/categories');
+		if ($category->posts()->count() > 0) {
+			return Redirect::to('admin/categories')
+				->with('status-error', 'You cannot delete category '.$category->name.' because it has posts filed.');
+		}
+
+		return View::make('layouts.delete')->with('cancel_path', 'admin/categories')->with('page_title', 'Delete category "'.$category->name.'"');
 	}
 
 	public function post_delete($category_id)
@@ -96,6 +101,8 @@ class Categories_Controller extends Base_Controller
 		if($validation->fails()) {
 			return Redirect::back()->with_errors($validation)->with('cancel_path', 'admin/categories');
 		}
+
+
 		
 		// Now delete the category
 		$category_name = $category->name;

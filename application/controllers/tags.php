@@ -13,14 +13,14 @@ class Tags_Controller extends Base_Controller
 		// PAGE - List of tags
 		$tags = Tag::order_by('name', 'asc')->get();
 
-		return View::make('tag.index')->with('tags', $tags);
+		return View::make('tag.index')->with('tags', $tags)->with('page_title', 'Tags');
 	}
 
 	public function get_add()
 	{
 		// PAGE - Add a new tag
 		$tag = new Tag; // Initiate for cleaner form view setup
-		return View::make('tag.new')->with('tag', $tag);
+		return View::make('tag.new')->with('tag', $tag)->with('page_title', 'Add a tag');
 	}
 
 	public function post_add()
@@ -50,7 +50,7 @@ class Tags_Controller extends Base_Controller
 			return Response::error('404');
 		}
 
-		return View::make('tag.edit')->with('tag', $tag);
+		return View::make('tag.edit')->with('tag', $tag)->with('page_title', 'Edit tag "'.$tag->name.'"');
 	}
 
 	public function post_edit($tag_id)
@@ -82,7 +82,12 @@ class Tags_Controller extends Base_Controller
 			return Response::error('404');
 		}
 
-		return View::make('layouts.delete')->with('cancel_path', 'admin/tags');
+		if ($tag->posts()->count() > 0) {
+			return Redirect::to('admin/tags')
+				->with('status-error', 'You cannot delete tag '.$tag->name.' because it has posts tagged.');
+		}
+
+		return View::make('layouts.delete')->with('cancel_path', 'admin/tags')->with('page_title', 'Delete tag "'.$tag->name.'"');
 	}
 
 	public function post_delete($tag_id)

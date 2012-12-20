@@ -13,7 +13,7 @@ class Posts_Controller extends Base_Controller
 		// PAGE - List of posts
 		$posts = Post::order_by('title', 'asc')->get();
 
-		return View::make('post.index')->with('posts', $posts);
+		return View::make('post.index')->with('posts', $posts)->with('page_title', 'Posts');
 	}
 
 	public function get_show($post_slug)
@@ -25,14 +25,14 @@ class Posts_Controller extends Base_Controller
 			return Response::error('404');
 		}
 
-		return View::make('post.show')->with('post', $post);
+		return View::make('post.show')->with('post', $post)->with('page_title', $post->title);
 	}
 
 	public function get_add()
 	{
 		// PAGE - Add a new post
 		$post = new Post; // Initiate for cleaner form view setup
-		return View::make('post.new')->with('post', $post);
+		return View::make('post.new')->with('post', $post)->with('page_title', 'Add a post');
 	}
 
 	public function post_add()
@@ -62,7 +62,7 @@ class Posts_Controller extends Base_Controller
 			return Response::error('404');
 		}
 
-		return View::make('post.edit')->with('post', $post);
+		return View::make('post.edit')->with('post', $post)->with('page_title', 'Edit post "'.$post->title.'"');
 	}
 
 	public function post_edit($post_slug)
@@ -92,7 +92,7 @@ class Posts_Controller extends Base_Controller
 			return Response::error('404');
 		}
 
-		return View::make('layouts.delete')->with('cancel_path', 'posts/'.$post_slug);
+		return View::make('layouts.delete')->with('cancel_path', 'posts/'.$post_slug)->with('page_title', 'Delete post "'.$post->title.'"');
 	}
 
 	public function post_delete($post_slug)
@@ -109,6 +109,7 @@ class Posts_Controller extends Base_Controller
 		
 		// Now delete the post
 		$post_title = $post->title;
+		$post->tags()->delete();
 		$post->delete();
 		return Redirect::to('posts')->with('status', 'Post '.$post_title.' has been deleted.');
 	}

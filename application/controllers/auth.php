@@ -16,7 +16,7 @@ class Auth_Controller extends Base_Controller
 	{
 		// PAGE - Login
 		if (Auth::guest()) {
-			return View::make('user.login');
+			return View::make('user.login')->with('page_title', 'Login');
 		} else {
 			return Redirect::home()->with('status-error', 'You are already logged in.');
 		}

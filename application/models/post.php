@@ -51,9 +51,10 @@ class Post extends Eloquent
 		$post->slug = $input['slug'];
 		$post->body = $input['body'];
 		$post->category_id = $input['category'];
-		$post->tags()->sync($input['tags']);
 		$post->user_id = Auth::user()->id;
 		$post->save();
+
+		$post->tags()->sync($input['tags']);
 
 		return $post;
 	}

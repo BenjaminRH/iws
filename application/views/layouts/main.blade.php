@@ -1,61 +1,120 @@
 <!DOCTYPE html>
-
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>      <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>      <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8" />
 
-	<!-- Set the viewport width to device width for mobile -->
-	<meta name="viewport" content="width=device-width" />
+	<!-- Basic Page Needs -->
+	<meta charset="utf-8">
+	<title>{{ $page_title }} - Indie Web Series</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-	<title>Indie Web Series</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<!-- Droid Serif and Sans fonts from Google -->
-	<link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet'>
-	<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet'>
+	<!-- CSS Style -->
+	{{ HTML::style('css/style.css') }}
 	
-	<!-- Included CSS Files (Compressed) -->
-	{{ HTML::style('css/foundation.min.css') }}
-	{{ HTML::style('css/main.css') }}
+	<!-- Color Skins -->
+	{{ HTML::style('css/green.css') }}
+	
+	<!-- Layout Style -->
+	{{ HTML::style('css/wide.css') }}
+	
+	<!-- Small Icons -->
+	{{ HTML::style('css/halflings.css') }}
+	
+	<!-- Start JavaScript -->
+	
+	{{ HTML::script('js/jquery-1.8.3.min.js') }} <!-- jQuery library -->
+	{{ HTML::script('js/jquery.easing.1.3.min.js') }} <!-- jQuery Easing -->
+	{{ HTML::script('js/jquery-ui.min.js') }} <!-- jQuery Ui -->
+	{{ HTML::script('js/jquery.cookie.js') }} <!-- jQuery cookie -->
+	{{ HTML::script('js/jquery.uniform.min.js') }} <!-- jQuery Uniform -->
+	{{ HTML::script('js/ddsmoothmenu.js') }} <!-- Nav Menu ddsmoothmenu -->
+	{{ HTML::script('js/jquery.flexslider.js') }} <!-- Flex Slider  -->
+	{{ HTML::script('js/jquery.eislideshow.js') }} <!-- Elastic Slider  -->
+	{{ HTML::script('js/jquery.iconmenu.js') }} <!-- Sliding Text and Icon Menu Style  -->
+	{{ HTML::script('js/colortip.js') }} <!-- Colortip Tooltip Plugin  -->
+	{{ HTML::script('js/tytabs.js') }} <!-- jQuery Plugin tytabs  -->
+	{{ HTML::script('js/carousel.js') }} <!-- jQuery Carousel  -->
+	{{ HTML::script('js/jquery.prettyPhoto.js') }} <!-- jQuery Prettyphoto  -->
+	{{ HTML::script('js/jquery.isotope.min.js') }} <!-- Isotope Filtering  -->
+	{{ HTML::script('js/selectnav.js') }} <!-- Responsive Navigation Menu by SelectNav -->
+	{{ HTML::script('js/jquery.ui.totop.js') }} <!-- UItoTop plugin  -->
+	{{ HTML::script('js/custom.js') }} <!-- Custom Js file for javascript in html -->
+	
+	<!-- End JavaScript -->
 
-	<!-- Included JS Files (Compressed) -->
-	{{ HTML::script('js/modernizr.foundation.js') }}
-	{{ HTML::script('js/jquery-1.8.3.min.js') }}
+	<!--[if lt IE 9]>
+			{{ HTML::script('js/html5.js') }}
+			<![endif]-->
+
+			<!-- Favicons -->
+	{{--
+	{{ HTML::style('images/favicon/favicon.ico') }}
+	{{ HTML::style('images/favicon/apple-touch-icon.png') }}
+	{{ HTML::style('images/favicon/apple-touch-icon-72x72.png') }}
+	{{ HTML::style('images/favicon/apple-touch-icon-114x114.png') }}
+	--}}
+
 </head>
 <body>
-	<div class="page-section page-section-top">
-		<header class="row">
-			@include('layouts.header')
-		</header>
-	</div>
 
-	<div class="page-section page-section-main">
-		<div class="row">
-			@include('layouts.messages')
-			
-			<div class="eight columns">
+	<div id="wrap" class="boxed">
+
+		<header>
+			<div class="container clearfix">
+				@include('layouts.header')
+			</div><!-- End Container -->
+		</header><!-- <<< End Header >>> -->
+
+		<div class="container clearfix">
+
+			<div class="sixteen columns">
+				<h1 class="page-title">
+					{{ $page_title }}
+					<span class="line"></span>
+				</h1>
+			</div><!-- Page Title -->
+
+
+			<!-- Start Main Content -->
+			<div class="eleven columns top bottom">
 				@yield('content')
-			</div>
+			</div><!-- End Main Content -->  
 
-			<div class="four columns sidebar">
+
+			<!-- Start Sidebar -->
+			<div class="five columns bottom">
 				@include('layouts.sidebar')
+			</div><!-- End Sidebar -->
+
+			<div class="clearfix"></div>
+		</div><!-- <<< End Container >>> -->
+
+		<footer>
+			<div class="container">
+				@include('layouts.footer')
 			</div>
-		</div>
-	</div>
+		</footer><!-- <<< End Footer >>> -->
 
-	<div class="page-section page-section-bottom">
-		<footer class="row">
-			@include('layouts.footer')
-		</footer>
-	</div>
+	</div><!-- End wrap -->
 
-	<!-- Included JS Files (Compressed) -->
-	{{ HTML::script('js/foundation.min.js') }}
+	<script type="text/javascript">
+		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		var disqus_shortname = 'indiewebseries'; // required: replace example with your forum shortname
 
-	<!-- Initialize JS Plugins -->
-	{{ HTML::script('js/init.js') }}
+		/* * * DON'T EDIT BELOW THIS LINE * * */
+		(function () {
+			var s = document.createElement('script'); s.async = true;
+			s.type = 'text/javascript';
+			s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+			(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+		}());
+	</script>
+
 </body>
 </html>

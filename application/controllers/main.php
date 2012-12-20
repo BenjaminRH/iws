@@ -19,21 +19,21 @@ class Main_Controller extends Base_Controller
 	public function get_index()
 	{
 		// PAGE - Homepage - list of recent posts
-		$posts = Post::order_by('created_at', 'desc')->take(10)->get();
+		$posts = Post::with(array('tags', 'category'))->order_by('created_at', 'desc')->take(10)->get();
 
-		return View::make('main.home')->with('posts', $posts);
+		return View::make('main.home')->with('posts', $posts)->with('page_title', 'Home');
 	}
 
 	public function get_about()
 	{
 		// PAGE - About us
-		return View::make('main.about');
+		return View::make('main.about')->with('page_title', 'About');
 	}
 
 	public function get_contact()
 	{
 		// PAGE - Contact us
-		return View::make('main.contact');
+		return View::make('main.contact')->with('page_title', 'Contact');
 	}
 
 	public function post_contact()

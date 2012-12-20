@@ -1,8 +1,35 @@
-<p>Copyright 2012 by Miriam Kalman and Benjamin Harris. All rights reserved.</p>
+<div class="eight columns">
+	<div class="about">
+		<h3 class="title">About Us<span class="line"></span></h3>
+		<p>
+			Consectetur adipiscing elit aeneane lorem lipsum, condimentum ultrices consequat eu, vehicula mauris lipsum adipiscing 
+			lipsum aenean orci lorem Asequat. <br /> lorem ipsum dolor lorem sit amet, consectetur adipiscing dolor .
+		</p>
+	</div>
+</div><!-- End about -->
 
-@if (Auth::guest())
-<p>{{ HTML::link('login', 'Login') }}</p>
-@else
-<p>Currently logged in as <b>{{ Auth::user()->email }}</b> | {{ HTML::link('logout', 'Logout') }}</p>
-<p><b>Admin:</b> {{ HTML::link('admin', 'Dashboard') }} | {{ HTML::link('admin/users', 'Users') }} | {{ HTML::link('admin/posts', 'Posts') }} | {{ HTML::link('admin/series', 'Series') }} | {{ HTML::link('admin/categories', 'Categories') }} | {{ HTML::link('admin/tags', 'Tags') }}</p>
-@endif
+<div class="eight columns">
+	<div class="tweets">
+		<h3 class="title">Latest tweets<span class="line"></span></h3>
+		<div class='tweet query footer'></div><!-- Tweets Code -->
+	</div>
+</div><!-- End tweets -->
+
+<div class="sixteen columns"><hr class="bottom" /></div>
+
+<div class="eight columns">
+	<span class="copyright">
+		Copyright &copy; 2012 by Miriam Kalman and Benjamin Harris. All rights reserved.
+	</span>
+</div>
+
+<div class="eight columns">
+	<div class="social">
+		<a href="#"><img src="images/icons/twitter.png" alt="" /></a>
+		<a href="#"><img src="images/icons/facebook.png" alt="" /></a>
+		<a href="#"><img src="images/icons/skype.png" alt="" /></a>
+		<a href="#"><img src="images/icons/digg.png" alt="" /></a>
+		<a href="#"><img src="images/icons/linkedin.png" alt="" /></a>
+		<a href="#"><img src="images/icons/vimeo.png" alt="" /></a>
+	</div>
+</div>

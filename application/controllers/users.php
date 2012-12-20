@@ -13,14 +13,14 @@ class Users_Controller extends Base_Controller
         // PAGE - List of users
         $users = User::order_by('email', 'asc')->get();
 
-        return View::make('user.index')->with('users', $users);
+        return View::make('user.index')->with('users', $users)->with('page_title', 'Users');
     }
 
     public function get_add()
     {
         // PAGE - Add a new user
         $user = new User; // Initiate for cleaner form view setup
-        return View::make('user.new')->with('user', $user);
+        return View::make('user.new')->with('user', $user)->with('page_title', 'Add a user');
     }
 
     public function post_add()
@@ -53,7 +53,7 @@ class Users_Controller extends Base_Controller
             return Response::error('404');
         }
 
-        return View::make('user.edit')->with('user', $user);
+        return View::make('user.edit')->with('user', $user)->with('page_title', 'Edit user "'.$user->name.'"');
     }
 
     public function post_edit($user_id)
@@ -85,7 +85,12 @@ class Users_Controller extends Base_Controller
             return Response::error('404');
         }
 
-        return View::make('layouts.delete')->with('cancel_path', 'admin/users');
+        if ($user->posts()->count() > 0) {
+            return Redirect::to('admin/users')
+                ->with('status-error', 'You cannot delete user '.$user->name.' because they has posts authored.');
+        }
+
+        return View::make('layouts.delete')->with('cancel_path', 'admin/users')->with('page_title', 'Delete user "'.$user->name.'"');
     }
 
     public function post_delete($user_id)

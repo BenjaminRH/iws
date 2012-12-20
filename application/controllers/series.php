@@ -13,7 +13,7 @@ class Series_Controller extends Base_Controller
         // PAGE - List of series
         $series = Series::order_by('name', 'asc')->get();
 
-        return View::make('series.index')->with('series', $series);
+        return View::make('series.index')->with('series', $series)->with('page_title', 'Web Series');
     }
 
     public function get_show($series_slug)
@@ -25,7 +25,7 @@ class Series_Controller extends Base_Controller
             return Response::error('404');
         }
 
-        return View::make('series.show')->with('series', $series);
+        return View::make('series.show')->with('series', $series)->with('page_title', $series->name);
     }
 
     public function get_add()
@@ -60,7 +60,7 @@ class Series_Controller extends Base_Controller
             return Response::error('404');
         }
 
-        return View::make('series.edit')->with('series', $series);
+        return View::make('series.edit')->with('series', $series)->with('page_title', 'Edit series "'.$series->name.'"');
     }
 
     public function series_edit($series_slug)
@@ -78,7 +78,7 @@ class Series_Controller extends Base_Controller
         // Update series database entry
         $series->update_series($input);
 
-        return Redirect::to('series.index')->with('status', 'Your changes to series '.$series->title.' have been saved!');
+        return Redirect::to('series.index')->with('status', 'Your changes to series '.$series->name.' have been saved!');
     }
 
     public function get_delete($series_slug)
@@ -90,7 +90,7 @@ class Series_Controller extends Base_Controller
             return Response::error('404');
         }
 
-        return View::make('series.delete')->with('series', $series);
+        return View::make('series.delete')->with('series', $series)->with('page_title', 'Delete series "'.$series->name.'"');
     }
 
     public function series_delete($series_slug)
