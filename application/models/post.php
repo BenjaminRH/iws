@@ -9,6 +9,7 @@ class Post extends Eloquent
 	public static $accessible = array(
 		'title',
 		'slug',
+		'image',
 		'body',
 		'category',
 		'tags'
@@ -18,6 +19,7 @@ class Post extends Eloquent
 	public static $validation_rules = array(
 		'title' => 'required',
 		'slug' => 'required|slug',
+		'image' => 'required|url',
 		'body' => 'required|min:100',
 		'category' => 'required|integer',
 		'tags' => 'required'

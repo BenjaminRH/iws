@@ -3,12 +3,12 @@
 	
 	{{--
 	<div class="image-post bottom left"> 
-		<a href="single_post.html">{{ HTML::image('images/img/blog/post-image-small-1.jpg') }}</a>  
+		<a href="single_post.html">{{ HTML::image($post->image) }}</a>  
 	</div><!-- End slider image-post -->
 	--}}
 
 	<div class="post-content">
-		{{ Str::limit($post->body, 300) }}
+		<p>{{ Str::limit(strip_tags($post->body), 300) }}</p>
 	</div>
 
 	<hr class="bottom-2">

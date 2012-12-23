@@ -8,13 +8,6 @@
 	</div>
 </div><!-- End about -->
 
-<div class="eight columns">
-	<div class="tweets">
-		<h3 class="title">Latest tweets<span class="line"></span></h3>
-		<div class='tweet query footer'></div><!-- Tweets Code -->
-	</div>
-</div><!-- End tweets -->
-
 <div class="sixteen columns"><hr class="bottom" /></div>
 
 <div class="eight columns">

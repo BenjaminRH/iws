@@ -25,6 +25,9 @@
 	
 	<!-- Small Icons -->
 	{{ HTML::style('css/halflings.css') }}
+
+	<!-- Custom css -->
+	{{ HTML::style('css/custom.css') }}
 	
 	<!-- Start JavaScript -->
 	
@@ -50,15 +53,13 @@
 
 	<!--[if lt IE 9]>
 			{{ HTML::script('js/html5.js') }}
-			<![endif]-->
+	<![endif]-->
 
-			<!-- Favicons -->
-	{{--
-	{{ HTML::style('images/favicon/favicon.ico') }}
-	{{ HTML::style('images/favicon/apple-touch-icon.png') }}
-	{{ HTML::style('images/favicon/apple-touch-icon-72x72.png') }}
-	{{ HTML::style('images/favicon/apple-touch-icon-114x114.png') }}
-	--}}
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="images/favicon/favicon.ico">
+	<link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-touch-icon-114x114.png">
 
 </head>
 <body>
