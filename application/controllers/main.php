@@ -24,6 +24,12 @@ class Main_Controller extends Base_Controller
 		return View::make('main.home')->with('posts', $posts)->with('page_title', 'Home');
 	}
 
+	public function get_search()
+	{
+		// PAGE - Search results
+		return View::make('main.search')->with('page_title', 'Search results');
+	}
+
 	public function get_about()
 	{
 		// PAGE - About us

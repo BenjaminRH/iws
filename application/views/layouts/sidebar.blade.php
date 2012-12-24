@@ -1,10 +1,9 @@
 <!-- Search Widget -->
 <div class="search top bottom">
-	<form action="#">
-		<input type="text" class="search" value="Search in blog" onBlur="if(this.value == '') { this.value = 'Search in blog'; }" 
-		onfocus="if(this.value == 'Search in blog') { this.value = ''; }" />
-		<input type="submit" value="" class="submit-search" />
-	</form>
+	{{ Form::open('search', 'GET') }}
+		{{ Form::text('q', 'Search', array('class' => 'search')) }}
+		{{ Form::submit('', array('class' => 'submit-search')) }}
+	{{ Form::close() }}
 </div>
 <!-- End -->
 

@@ -39,6 +39,7 @@ Route::get('home', function() {
 Route::get('about', 'main@about');
 Route::get('contact', 'main@contact');
 Route::post('contact', 'main@contact');
+Route::get('search', 'main@search'); // GOOGLE search results page
 
 // Auth
 Route::get('login', 'auth@login');
