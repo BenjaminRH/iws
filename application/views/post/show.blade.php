@@ -1,39 +1,42 @@
 @layout('layouts.main')
 
 @section('content')
-{{ HTML::link('posts', '&crarr; back to posts') }}
+<div class="post bottom">
+	<div class="post-meta bottom-2 transparent">
+		<div class="meta halflings calendar"><i></i> {{ date("D M d, Y", strtotime($post->created_at)) }}</div><!-- Date -->
+		<div class="meta halflings folder-open"><i></i> {{ HTML::link('#', $post->category->name) }}</div><!-- Category -->
+		<div class="meta halflings user"><i></i> {{ $post->user->name }}</div><!-- Author -->
+		<div class="meta halflings comments"><i></i> {{ HTML::link('#disqus_thread', '...') }}</div><!-- Comments -->
+		<div class="meta"><span class="halflings tags"><i></i>Tags: </span> 
+			@foreach($post->tags as $tag)
+			{{ HTML::link('#', $tag->name) }}, 
+			@endforeach
+		</div><!-- Tags -->
+	</div><!-- End post-meta -->
 
-<br>
-<br>
+	<div class="image-post bottom">
 
-<article class="post">
-	<aside class="pt-infobox">
-		<ul>
-			<li class="category">{{ $post->category->name }}</li>
-			<li class="date">{{ $post->created_at }}</li>
-			<li class="comments">{{ HTML::link("#disqus_thread", "Comments") }}</li>
-		</ul>
-	</aside>
+		<div class="post-content bottom">
+			{{ $post->body }}
+		</div><!-- End post-content -->
 
-	<h4>
-		{{ $post->title }}
-		@if(Auth::check())
-		({{ HTML::link('admin/posts/'.$post->slug.'/edit', 'edit') }}/{{ HTML::link('admin/posts/'.$post->slug.'/delete', 'delete') }})
-		@endif
-	</h4>
-	<hr>
-	{{ $post->body }}
 
-	<ul class="tags">
-	@foreach($post->tags as $tag)
-		<li><a href="#">{{ $tag->name }}</a></li>
-	@endforeach
-	</ul>
-</article>
+		<hr class="bottom-2"/>
 
-<br><hr><br>
+		<br />
 
-<div id="disqus_thread"></div>
+		<h4 class="title">About The Author<span class="line"></span></h4>
+
+		<div class="info-box">
+			<h5>{{ $post->user->name }}</h5>
+			<p>{{ $post->user->about }}</p>
+			<hr class="top-3 bottom-2" />
+		</div>
+	</div>
+
+	<div id="disqus_thread"></div>
+</div>
+
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'indiewebseries'; // required: replace example with your forum shortname

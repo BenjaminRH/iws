@@ -51,6 +51,7 @@ class Post extends Eloquent
 		$post = new Post;
 		$post->title = $input['title'];
 		$post->slug = $input['slug'];
+		$post->image = $input['image'];
 		$post->body = $input['body'];
 		$post->category_id = $input['category'];
 		$post->user_id = Auth::user()->id;
@@ -65,6 +66,7 @@ class Post extends Eloquent
 	public function update_post($input) {
 		$this->title = $input['title'];
 		$this->slug = $input['slug'];
+		$this->image = $input['image'];
 		$this->body = $input['body'];
 		$this->category_id = $input['category'];
 		$this->tags()->sync($input['tags']);
