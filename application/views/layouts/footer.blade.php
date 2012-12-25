@@ -10,19 +10,13 @@
 
 <div class="sixteen columns"><hr class="bottom" /></div>
 
-<div class="eight columns">
+<div class="sixteen columns">
 	<span class="copyright">
-		Copyright &copy; 2012 by Miriam Kalman and Benjamin Harris. All rights reserved.
+		Copyright &copy; 2012 by Miriam Kalman and Benjamin Harris. All rights reserved. 
+		@if(Auth::guest())
+			{{ HTML::link('login', 'Login') }}
+		@else
+			Logged in as <strong>{{ Auth::user()->email }}</strong>. {{ HTML::link('logout', 'Logout') }}
+		@endif
 	</span>
-</div>
-
-<div class="eight columns">
-	<div class="social">
-		<a href="#"><img src="images/icons/twitter.png" alt="" /></a>
-		<a href="#"><img src="images/icons/facebook.png" alt="" /></a>
-		<a href="#"><img src="images/icons/skype.png" alt="" /></a>
-		<a href="#"><img src="images/icons/digg.png" alt="" /></a>
-		<a href="#"><img src="images/icons/linkedin.png" alt="" /></a>
-		<a href="#"><img src="images/icons/vimeo.png" alt="" /></a>
-	</div>
 </div>
