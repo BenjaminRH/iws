@@ -1,7 +1,6 @@
 /* Import Basic Files
 ================================================== */
 
-@import url("fonts.css");               /* Custom Fonts */
 @import url("base.css");                /* Reset & Basics */
 @import url("skeleton.css");            /* Base 960 Grid */
 @import url("javascript.css");          /* Css Styles for js scripts */
@@ -778,7 +777,6 @@ a.twitter, a.facebook, a.skype, a.linkedin {
 	text-align:center;
 	display:block;
 	margin-bottom:13px;
-	font-family: 'TitilliumText22LRegular', Arial, sans-serif;
 	font-weight:bold;
 	color:#7e7e7e;
 }
@@ -996,7 +994,6 @@ blockquote {
 	text-align:center;
 	display:block;
 	margin-bottom:13px;
-	font-family: 'TitilliumText22LRegular', Arial, sans-serif;
 	font-weight:bold;
 	color:#7e7e7e;
 }
@@ -1309,7 +1306,6 @@ a.twitter, a.facebook, a.skype, a.linkedin {
 	text-align:center;
 	display:block;
 	margin-bottom:13px;
-	font-family: 'TitilliumText22LRegular', Arial, sans-serif;
 	font-weight:bold;
 	color:#7e7e7e;
 }

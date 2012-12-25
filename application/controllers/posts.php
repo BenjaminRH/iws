@@ -11,7 +11,7 @@ class Posts_Controller extends Base_Controller
 	public function get_index()
 	{
 		// PAGE - List of posts
-		$posts = Post::order_by('created_at', 'desc')->paginate(2);
+		$posts = Post::order_by('created_at', 'desc')->paginate(1);
 
 		return View::make('post.index')->with('posts', $posts)->with('page_title', 'Posts');
 	}

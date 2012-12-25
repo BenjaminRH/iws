@@ -16,6 +16,10 @@
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+	<!-- Droid Serif and Sans fonts from Google -->
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet'>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet'>
+
 	<!-- CSS Style -->
 	{{ HTML::style('css/style.css') }}
 	
@@ -25,8 +29,9 @@
 	<!-- Layout Style -->
 	{{ HTML::style('css/boxed.css') }}
 	
-	<!-- Small Icons -->
+	<!-- Icons -->
 	{{ HTML::style('css/halflings.css') }}
+	{{ HTML::style('css/glyphicons.css') }}
 
 	<!-- Custom css -->
 	{{ HTML::style('css/custom.css') }}

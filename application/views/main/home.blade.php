@@ -12,8 +12,8 @@
 					<ul class="slides">
 						@foreach($slider_posts as $post)
 						<li>
-							<a href="{{ URL::to('posts/'.$post->slug) }}">{{ HTML::image($post->image, $post->title, array('style' => 'width:600px;height:300px')) }}</a>
-							<p class="flex-caption"><span>{{ $post->title }}</span> {{ Str::limit(strip_tags($post->body), 75) }}</p>
+							<a href="{{ URL::to('posts/'.$post->slug) }}">{{ HTML::image($post->image, $post->title) }}</a>
+							<p class="flex-caption"><span>{{ $post->title }}</span></p>
 						</li>
 						@endforeach
 					</ul>

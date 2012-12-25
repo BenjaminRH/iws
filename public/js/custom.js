@@ -74,8 +74,6 @@ $(document).ready(function() {
 	});
 })(jQuery)
 
-// Carousel Slider
-
 // Sliding Text and Icon Menu Style
 $(function() {
 	$('#sti-menu').iconmenu();

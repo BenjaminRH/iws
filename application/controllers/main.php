@@ -21,7 +21,7 @@ class Main_Controller extends Base_Controller
 		// PAGE - Homepage - list of recent posts
 		$posts = Post::with(array('tags', 'category'))->order_by('created_at', 'desc')->take(10)->get();
 
-		return View::make('main.home')->with('posts', array_slice($posts, 3))->with('slider_posts', array_slice($posts, 0, 3))->with('page_title', 'Home');
+		return View::make('main.home')->with('posts', $posts)->with('slider_posts', array_slice($posts, 0, 3))->with('page_title', 'Home');
 	}
 
 	public function get_search()

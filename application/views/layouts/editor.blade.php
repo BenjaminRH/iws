@@ -19,7 +19,8 @@ $(document).ready(function() {
 			'unorderedlist', 'orderedlist', 'outdent', 'indent',
 			'|',
 			'image', 'video', 'link'
-		]
+		],
+		fixed: true
 	});
 
 	// Chosen
