@@ -953,7 +953,6 @@ ul.team  li img, img.pic {
 }
 
 .image-post img {
-	min-width:420px;
 	max-height:250px;
 }
 
@@ -1330,7 +1329,6 @@ input.search {
 }
 
 .image-post img {
-	min-width:300px;
 	max-height:220px;
 }
 

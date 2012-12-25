@@ -9,19 +9,19 @@
 	{{-- Name field --}}
 	<div class="form-box">
 		{{ Form::label('name', 'Name *') }}
-		{{ Form::text('name', Input::old('name'), array('class' => 'text')) }}
+		{{ Form::text('name', Input::old('name'), array('class'=>'text')) }}
 	</div>
 
 	{{-- Email field --}}
 	<div class="form-box">
 		{{ Form::label('email', 'Email *') }}
-		{{ Form::text('email', Input::old('email'), array('class' => 'text')) }}
+		{{ Form::text('email', Input::old('email'), array('class'=>'text')) }}
 	</div>
 
 	{{-- Subject field --}}
 	<div class="form-box last">
 		{{ Form::label('subject', 'Subject *') }}
-		{{ Form::text('subject', Input::old('subject'), array('class' => 'text')) }}
+		{{ Form::text('subject', Input::old('subject'), array('class'=>'text')) }}
 	</div>
 
 	{{-- Message field --}}
@@ -30,8 +30,6 @@
 		{{ Form::textarea('message', Input::old('message')) }}
 	</div>
 
-	<div class="clearfix"></div>
-
-	{{ Form::submit('Send Message', array('class' => 'button medium color')) }}
+	{{ Form::submit('Send Message', array('class' => 'button small color')) }}
 {{ Form::close() }}
 @endsection

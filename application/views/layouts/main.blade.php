@@ -7,7 +7,9 @@
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
+	@section('meta_page_title')
 	<title>{{ $page_title }} - Indie Web Series</title>
+	@yield_section
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -40,7 +42,6 @@
 	{{ HTML::script('js/jquery.flexslider.js') }} <!-- Flex Slider  -->
 	{{ HTML::script('js/jquery.eislideshow.js') }} <!-- Elastic Slider  -->
 	{{ HTML::script('js/jquery.iconmenu.js') }} <!-- Sliding Text and Icon Menu Style  -->
-	{{ HTML::script('js/colortip.js') }} <!-- Colortip Tooltip Plugin  -->
 	{{ HTML::script('js/tytabs.js') }} <!-- jQuery Plugin tytabs  -->
 	{{ HTML::script('js/carousel.js') }} <!-- jQuery Carousel  -->
 	{{ HTML::script('js/jquery.prettyPhoto.js') }} <!-- jQuery Prettyphoto  -->
@@ -76,12 +77,16 @@
 
 		<div class="container clearfix">
 
+			@include('layouts.messages')
+
+			@section('page_title')
 			<div class="sixteen columns">
 				<h1 class="page-title">
 					{{ $page_title }}
 					<span class="line"></span>
 				</h1>
 			</div><!-- Page Title -->
+			@yield_section
 
 
 			<!-- Start Main Content -->

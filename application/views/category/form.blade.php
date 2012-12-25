@@ -4,12 +4,10 @@
 	{{ Form::token() }}
 
 	{{-- Name field --}}
-	<div class="form-box">
+	<fieldset>
 			{{ Form::label('name', 'Name') }}
-			{{ Form::text('name', Input::old('name', $category->name), array('class' => 'text' )) }}
-	</div>
+			{{ Form::text('name', Input::old('name', $category->name), array('class'=>'text')) }}
+	</fieldset>
 
-	<div class="clearfix"></div>
-
-	{{ Form::submit('Save Category', array('class' => 'button medium color')) }}
+	{{ Form::submit('Save Category', array('class' => 'button small color')) }}
 {{ Form::close() }}

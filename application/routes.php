@@ -110,12 +110,12 @@ Route::post('admin/categories/(:num)/delete', 'categories@delete');
 
 Event::listen('404', function()
 {
-	return Response::error('404');
+	return View::make('error.404')->with('page_title', '404 - Page Not Found');
 });
 
 Event::listen('500', function()
 {
-	return Response::error('500');
+	return View::make('error.500')->with('page_title', '500 - Internal Server Error');
 });
 
 /*

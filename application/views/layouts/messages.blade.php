@@ -1,15 +1,12 @@
-<div class="row">
-	<div class="twelve columns">
-		@if (Session::has('status'))
-		<div class="alert-box success">
-			{{ Session::get('status') }}
-			<a href="" class="close">&times;</a>
-		</div>
-		@elseif (Session::has('status-error'))
-		<div class="alert-box alert">
-			{{ Session::get('status-error') }}
-			<a href="" class="close">&times;</a>
-		</div>
-		@endif
+<!-- Status Messages -->
+@if (Session::has('status'))
+	<div class="alert success hideit">
+		<p>{{ Session::get('status') }}</p>
+		<span class="close"></span>
 	</div>
-</div>
+@elseif (Session::has('status-error'))
+	<div class="alert error hideit">
+		<p>{{ Session::get('status-error') }}</p>
+		<span class="close"></span>
+	</div>
+@endif<!-- End Status Messages -->

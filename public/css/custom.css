@@ -5,3 +5,7 @@ header {
 .navigation ul li a {
 	padding: 50px 12px 50px 12px;
 }
+
+form fieldset {
+	margin-bottom: 20px;
+}

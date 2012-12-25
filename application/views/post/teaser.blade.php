@@ -2,7 +2,7 @@
 	<h2 class="title bottom top-2">{{ HTML::link('posts/'.$post->slug, $post->title) }} <span class="line"></span></h2>
 	
 	<div class="image-post bottom left"> 
-		<a href="single_post.html">{{ HTML::image($post->image, $post->title, array('style' => 'max-width:100px;max-height:100px')) }}</a>  
+		{{ HTML::image($post->image, $post->title, array('style' => 'max-width:100px;max-height:65px')) }}
 	</div><!-- End slider image-post -->
 
 	<div class="post-content">

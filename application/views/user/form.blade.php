@@ -4,39 +4,34 @@
 	{{ Form::token() }}
 
 	{{-- Name field --}}
-	<div class="form-box">
-		{{ Form::label('name', 'Name')) }}
-		{{ Form::text('name', Input::old('name', $user->name), array('class' => 'text')) }}
-		
-	</div>
+	<fieldset>
+		{{ Form::label('name', 'Name') }}
+		{{ Form::text('name', Input::old('name', $user->name), array('class'=>'text')) }}
+	</fieldset>
 
 	{{-- Email field --}}
-	<div class="form-box last">
-		{{ Form::label('email', 'Email')) }}
-		{{ Form::email('email', Input::old('email', $user->email), array('class' => 'text')) }}
-	</div>
-
-	@if(URI::segment(3) !== 'add')
 	<fieldset>
-		<legend>Password (leave blank to keep current password)</legend>
-	@endif
-
-		<div class="form-box">	
-			{{-- Password field --}}
-			{{ Form::label('password', 'Password')) }}
-			{{ Form::password('password', array('class' => 'text')) }}
-			
-
-			{{-- Confirm Password field --}}
-			{{ Form::label('password_confirmation', 'Confirm password')) }}
-			{{ Form::password('password_confirmation', array('class' => 'text')) }}
-		</div>
-
-	@if(URI::segment(3) !== 'add')
+		{{ Form::label('email', 'Email') }}
+		{{ Form::email('email', Input::old('email', $user->email), array('class'=>'text')) }}
 	</fieldset>
-	@endif
 
-	<div class="clearfix"></div>
+	<fieldset>
+		@if(URI::segment(3) !== 'add')
+			<h3>Password (leave blank to keep current password)</h3>
+		@endif
 
-	{{ Form::submit('Save', array('class' => 'button medium color')) }}
+		{{-- Password field --}}
+		<fieldset>
+			{{ Form::label('password', 'Password') }}
+			{{ Form::password('password', array('class'=>'text')) }}
+		</fieldset>
+
+		{{-- Confirm Password field --}}
+		<fieldset>
+			{{ Form::label('password_confirmation', 'Confirm password') }}
+			{{ Form::password('password_confirmation', array('class'=>'text')) }}
+		</fieldset>
+	</fieldset>
+
+	{{ Form::submit('Save', array('class' => 'button small color')) }}
 {{ Form::close() }}

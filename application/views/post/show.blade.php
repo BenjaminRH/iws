@@ -14,6 +14,10 @@
 		</div><!-- Tags -->
 	</div><!-- End post-meta -->
 
+	<div class="image-post bottom"> 
+		{{ HTML::image($post->image, $post->title, array('style' => 'width:640px;height:300px')) }}
+	</div>
+
 	<div class="image-post bottom">
 
 		<div class="post-content bottom">
