@@ -1,5 +1,6 @@
 header {
 	background-color: #eeeeee;
+	margin-bottom: 10px;
 }
 
 .navigation ul li a {
@@ -8,4 +9,8 @@ header {
 
 form fieldset {
 	margin-bottom: 20px;
+}
+
+#slider {
+	margin-top: 0;
 }

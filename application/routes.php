@@ -77,6 +77,7 @@ Route::post('admin/series/(:any)/delete', 'series@delete');
 
 // Tag
 Route::get('admin/tags', 'tags@index');
+Route::get('tags/(:num)', 'tags@show');
 Route::get('admin/tags/add', 'tags@add');
 Route::post('admin/tags/add', 'tags@add');
 Route::get('admin/tags/(:num)/edit', 'tags@edit');

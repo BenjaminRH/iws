@@ -1,12 +1,21 @@
 <div class="eight columns">
 	<div class="about">
 		<h3 class="title">About Us<span class="line"></span></h3>
-		<p>
-			Consectetur adipiscing elit aeneane lorem lipsum, condimentum ultrices consequat eu, vehicula mauris lipsum adipiscing 
-			lipsum aenean orci lorem Asequat. <br /> lorem ipsum dolor lorem sit amet, consectetur adipiscing dolor .
-		</p>
+		<p>Indie Web Series is a comprehensive authority on internet web series, covering many aspects of the growing web series industry and bringing you the latest updates, interviews with creators and stars, reviews of episodes, and even never-before-seen sneak peeks and previews of upcoming media.</p>
 	</div>
 </div><!-- End about -->
+
+<div class="eight columns">
+	<div class="about">
+		<h3 class="title">Website Updates<span class="line"></span></h3>
+		<p><strong>Working on:</strong> improved post searching features</p>
+		<ul class="check-list">
+			<li>Pagination</li>
+			<li>Tags and categories hooked up</li>
+			<li>Fixed image slider size issues</li>
+		</ul>
+	</div>
+</div><!-- End updates -->
 
 <div class="sixteen columns"><hr class="bottom" /></div>
 

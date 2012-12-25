@@ -1,2 +1,11 @@
-<h1>Under construction</h1>
-<p>This will most likely be the tag name and the posts (and series?) tagged with this tag. Maybe. Very possibly a description field, although I suspect not? And a slug field makes a lot of sense, for things like "tags/bob" or filter by tag etc.?</p>
+@layout('layouts.main')
+
+@section('content')
+@foreach($posts->results as $post)
+	@include('post.teaser')
+@endforeach
+
+<hr>
+
+{{ $posts->links() }}
+@endsection

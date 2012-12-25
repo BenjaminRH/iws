@@ -9,13 +9,16 @@
 		<div class="meta halflings comments"><i></i> {{ HTML::link('#disqus_thread', '...') }}</div><!-- Comments -->
 		<div class="meta"><span class="halflings tags"><i></i>Tags: </span> 
 			@foreach($post->tags as $tag)
-			{{ HTML::link('#', $tag->name) }}, 
+			{{ HTML::link('tags/'.$tag->id, $tag->name) }}, 
 			@endforeach
 		</div><!-- Tags -->
+		@if(Auth::check())
+			<div class="meta halflings pencil"><i></i> {{ HTML::link('admin/posts/'.$post->slug.'/edit', 'Edit post') }}</div>
+		@endif
 	</div><!-- End post-meta -->
 
 	<div class="image-post bottom"> 
-		{{ HTML::image($post->image, $post->title, array('style' => 'width:640px;height:300px')) }}
+		{{ HTML::image($post->image, $post->title, array('style' => 'width:600px;height:300px')) }}
 	</div>
 
 	<div class="image-post bottom">

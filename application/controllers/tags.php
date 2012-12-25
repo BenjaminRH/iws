@@ -16,6 +16,15 @@ class Tags_Controller extends Base_Controller
 		return View::make('tag.index')->with('tags', $tags)->with('page_title', 'Tags');
 	}
 
+	public function get_show($tag_id)
+	{
+		// PAGE - List of posts tagged with tag
+		$tag = Tag::find($tag_id);
+		$posts = $tag->posts()->paginate(1);
+
+		return View::make('tag.show')->with('posts', $posts)->with('page_title', 'Tag "'.$tag->name.'"');
+	}
+
 	public function get_add()
 	{
 		// PAGE - Add a new tag
