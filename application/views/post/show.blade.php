@@ -20,6 +20,8 @@
 	@if(Auth::check())
 		<br>
 		<p class="glyphicons pencil"><i></i> {{ HTML::link('admin/posts/'.$post->slug.'/edit', 'Edit post') }}</p>
+		<br>
+		<p class="glyphicons bin"><i></i> {{ HTML::link('admin/posts/'.$post->slug.'/delete', 'Delete post') }}</p>
 	@endif
 </div><!-- End post-meta -->
 @endsection
@@ -27,7 +29,7 @@
 @section('content')
 <div class="post bottom">
 	<div class="image-post bottom"> 
-		{{ HTML::image($post->image, $post->title, array('style' => 'width:600px;height:300px')) }}
+		{{ HTML::image($post->image, $post->title, array('style' => 'width:600px;max-height:400px')) }}
 	</div>
 
 	<div class="image-post bottom">
@@ -40,15 +42,6 @@
 		<hr class="bottom-2"/>
 
 		<br />
-
-		<h4 class="title">Author<span class="line"></span></h4>
-
-		<div class="info-box">
-			{{ HTML::image('http://www.gravatar.com/avatar/'.md5(strtolower(trim($post->user->email))), 'author photo', array('class' => 'pic-2')) }}
-			<h5>{{ $post->user->name }}</h5>
-			<!-- <p>{{ $post->user->about }}</p> -->
-			<hr class="top-3 bottom-2" />
-		</div>
 	</div>
 
 	<div id="disqus_thread"></div>

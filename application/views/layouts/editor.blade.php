@@ -20,7 +20,9 @@ $(document).ready(function() {
 			'|',
 			'image', 'video', 'link'
 		],
-		fixed: true
+		fixed: true,
+		wym: true,
+		cleanup: false
 	});
 
 	// Chosen

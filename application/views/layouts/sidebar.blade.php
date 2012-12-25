@@ -10,8 +10,18 @@
 </div>
 <!-- End -->
 
+<h2 class="title bottom-2">Follow us<span class="line"></span></h2>
+<div class="social-section bottom">
+	<a href="facebook" class="glyphicons facebook"><i></i></a>
+	<a href="twitter" class="glyphicons twitter"><i></i></a>
+	<a href="google_plus" class="glyphicons google_plus"><i></i></a>
+	<a href="email" class="glyphicons flickr"><i></i></a>
+</div>
+
 @section('sb_below_search')
 @yield_section
+
+<div style="padding: 5px 0"></div>
 
 <!-- Text Widget -->
 <h2 class="title bottom-2">Indie Web Series<span class="line"></span></h2>

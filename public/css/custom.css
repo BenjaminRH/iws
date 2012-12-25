@@ -28,3 +28,37 @@ ul.pagination {
 	list-style-type: none;
 	padding: 0;
 }
+
+ul.slides {
+	text-align: center;
+}
+
+ul.slides img {
+	height: 425px;
+}
+
+.flex-container {
+	margin-bottom: 10px;
+}
+
+.social-section a {
+	display: inline-block;
+	margin: 5px 0 0 10px;
+}
+
+.social-section * i:before {
+	-webkit-transition: all 0.3s ease-in;
+	-moz-transition: all 0.3s ease-in;
+	-ms-transition: all 0.3s ease-in;
+	-o-transition: all 0.3s ease-in;
+	transition: all 0.3s ease-in;
+}
+
+.social-section a i:before {
+	font-size: 34px;
+	color: #98cb00;
+}
+
+.social-section a:hover i:before {
+	color: #333333;
+}

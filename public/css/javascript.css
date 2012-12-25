@@ -197,6 +197,7 @@ html[xmlns] .slides{
 	background:#333;
 	filter:alpha(opacity=80); /* IE patch */
 	zoom:1;
+	width: 600px;
 }
 
 .flex-caption{

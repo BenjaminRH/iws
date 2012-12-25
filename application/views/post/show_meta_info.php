@@ -12,3 +12,15 @@
 			<div class="meta halflings pencil"><i></i> {{ HTML::link('admin/posts/'.$post->slug.'/edit', 'Edit post') }}</div>
 		@endif
 	</div>
+
+
+	{{ HTML::image('http://www.gravatar.com/avatar/'.md5(strtolower(trim($post->user->email))), 'author photo', array('class' => 'pic-2')) }}
+
+
+			<h4 class="title">Author<span class="line"></span></h4>
+
+		<div class="info-box">
+			<h5>{{ $post->user->name }}</h5>
+			<!-- <p>{{ $post->user->about }}</p> -->
+			<hr class="top-3 bottom-2" />
+		</div>

@@ -26,7 +26,7 @@
 	text-shadow:1px 1px 1px #fff;
 }
 
-#nav, .testimonials-arrow, .subscribe input.submit, .social, a.twitter, a.facebook, a.skype, a.linkedin, .next-project, .prev-project, .next-post , div.right, .comment, .comment .title span.right, .children {
+#nav, .testimonials-arrow, .subscribe input.submit, .next-project, .prev-project, .next-post , div.right, .comment, .comment .title span.right, .children {
 	float:right;
 }
 
@@ -513,14 +513,6 @@ ul.team  li h3 {
     margin-bottom: 5px;
 }
 
-/* team social icons */
-a.twitter, a.facebook, a.skype, a.linkedin {
-	width:26px;
-	height:26px;
-	margin:3px 0 0 3px;
-	text-indent:-9999px;
-}
-
 .choose ul li {
 	background:#fbfbfb url(../images/icons/list-icons/square.png) no-repeat;
 	background-position:3% 50%;
@@ -752,10 +744,6 @@ a.link {
 	font-size:15px;
 }
 
-a.twitter, a.facebook, a.skype, a.linkedin {
-	margin-left:1px;
-}
-
 .border {
 	max-width:225px;
 }
@@ -841,6 +829,10 @@ input.text, textarea {
 
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
+
+	ul.slides img {
+		height: 200px !important;
+	}
 	
 }
 
@@ -1254,10 +1246,6 @@ a.link {
 
 .team h3 {
 	font-size:15px;
-}
-
-a.twitter, a.facebook, a.skype, a.linkedin {
-	margin-left:1px;
 }
 
 .alert {

@@ -310,7 +310,7 @@ hr.bottom { border: solid #747474; border-width: 1px 0 0; clear: both; margin: 1
 
 /* Links
 ================================================== */
-a, .recent-work .item, .services .item .square, .clients ul.items li img, .subscribe input.submit, ul.team li, ul.team li img, ul.team li h3, .choose ul li, .our-services ul li h3, .icon-box, .square-list li, .check-list li, .plus-list li, .arrow-list li, .cross-list li, .star-list li, .minus-list li, .arrow2-list li, .circle-list li, .lightbox .item, .tables-column .footer h3 span, .thumbs li a, .button  { 
+a, .social-section a:hover i:before, .recent-work .item, .services .item .square, .clients ul.items li img, .subscribe input.submit, ul.team li, ul.team li img, ul.team li h3, .choose ul li, .our-services ul li h3, .icon-box, .square-list li, .check-list li, .plus-list li, .arrow-list li, .cross-list li, .star-list li, .minus-list li, .arrow2-list li, .circle-list li, .lightbox .item, .tables-column .footer h3 span, .thumbs li a, .button  { 
 	-webkit-transition: all 0.3s ease-in;  
     -moz-transition: all 0.3s ease-in;  
     -ms-transition: all 0.3s ease-in;  

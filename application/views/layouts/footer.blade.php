@@ -5,18 +5,6 @@
 	</div>
 </div><!-- End about -->
 
-<div class="eight columns">
-	<div class="about">
-		<h3 class="title">Website Updates<span class="line"></span></h3>
-		<p><strong>Working on:</strong> improved post searching features</p>
-		<ul class="check-list">
-			<li>Pagination</li>
-			<li>Tags and categories hooked up</li>
-			<li>Fixed image slider size issues</li>
-		</ul>
-	</div>
-</div><!-- End updates -->
-
 <div class="sixteen columns"><hr class="bottom" /></div>
 
 <div class="sixteen columns">
