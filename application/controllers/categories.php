@@ -16,6 +16,15 @@ class Categories_Controller extends Base_Controller
 		return View::make('category.index')->with('categories', $categories)->with('page_title', 'Categories');
 	}
 
+	public function get_show($category_id)
+	{
+		// PAGE - List of posts in category
+		$category = Category::find($category_id);
+		$posts = $category->posts()->paginate(1);
+
+		return View::make('category.show')->with('posts', $posts)->with('page_title', 'Category "'.$category->name.'"');
+	}
+
 	public function get_add()
 	{
 		// PAGE - Add a new category

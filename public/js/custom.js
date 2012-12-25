@@ -170,27 +170,6 @@ $(document).ready(function () {
 	});
 });
 
-// Carousel slider
-$(document).ready(function() {
-	$('.slidewrap').carousel({
-		slider: '.slider',
-		slide: '.slide',
-		slideHed: '.slidehed',
-		nextSlide : '.next',
-		prevSlide : '.prev',
-		addPagination: false,
-		addNav : false,
-		speed: 500 // ms.
-	});
-	$('.slidewrap2').carousel({ 
-		namespace: "carousel2" // Defaults to “carousel”.
-	});
-
-	$('.slidewrap3').carousel({ 
-		namespace: "carousel3" // Defaults to “carousel”.
-	});
-});
-
 // jQuery Prettyphoto Lightbox
 $(document).ready(function(){
 	$("area[rel^='prettyPhoto']").prettyPhoto();

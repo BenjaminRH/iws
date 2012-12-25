@@ -86,6 +86,7 @@ Route::post('admin/tags/(:num)/delete', 'tags@delete');
 
 // Category
 Route::get('admin/categories', 'categories@index');
+Route::get('categories/(:num)', 'categories@show');
 Route::get('admin/categories/add', 'categories@add');
 Route::post('admin/categories/add', 'categories@add');
 Route::get('admin/categories/(:num)/edit', 'categories@edit');
