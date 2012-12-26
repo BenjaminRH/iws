@@ -236,4 +236,6 @@ $(document).ready(function () {
 		thumbMaxWidth: 188,
 		titlesFactor: 0
 	});
+
+	
 });

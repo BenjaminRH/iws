@@ -5,7 +5,7 @@ class Tags_Controller extends Base_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->filter('before', 'auth');
+		$this->filter('before', 'auth')->except('show');
 	}
 
 	public function get_index()

@@ -46,17 +46,14 @@ ul.slides img {
 	margin: 5px 0 0 10px;
 }
 
-.social-section * i:before {
+.social-section a i:before {
+	font-size: 34px;
+	color: #98cb00;
 	-webkit-transition: all 0.3s ease-in;
 	-moz-transition: all 0.3s ease-in;
 	-ms-transition: all 0.3s ease-in;
 	-o-transition: all 0.3s ease-in;
 	transition: all 0.3s ease-in;
-}
-
-.social-section a i:before {
-	font-size: 34px;
-	color: #98cb00;
 }
 
 .social-section a:hover i:before {
