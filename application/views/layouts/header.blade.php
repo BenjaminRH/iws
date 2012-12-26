@@ -1,7 +1,7 @@
 <div class="one-third column">
 	<div class="logo">
 		<a href="{{ URL::home() }}">
-			{{ HTML::image('images/logo.png', 'Indie Web Series') }}
+			{{ HTML::image('images/logo.png', 'Indie Web Series', array('style' => 'height:60px')) }}
 		</a>
 	</div>
 </div><!-- End Logo -->

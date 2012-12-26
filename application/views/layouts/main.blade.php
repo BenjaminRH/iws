@@ -21,39 +21,13 @@
 	<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet'>
 
 	<!-- CSS Style -->
-	{{ HTML::style('css/style.css') }}
-	
-	<!-- Color Skins -->
-	{{ HTML::style('css/green.css') }}
-	
-	<!-- Layout Style -->
-	{{ HTML::style('css/boxed.css') }}
-	
-	<!-- Icons -->
-	{{ HTML::style('css/halflings.css') }}
-	{{ HTML::style('css/glyphicons.css') }}
-
-	<!-- Custom css -->
+	{{ HTML::style('css/css.min.css') }}
 	{{ HTML::style('css/custom.css') }}
 	
 	<!-- Start JavaScript -->
-	
 	{{ HTML::script('js/jquery-1.8.3.min.js') }} <!-- jQuery library -->
-	{{ HTML::script('js/jquery.easing.1.3.min.js') }} <!-- jQuery Easing -->
 	{{ HTML::script('js/jquery-ui.min.js') }} <!-- jQuery Ui -->
-	{{ HTML::script('js/jquery.cookie.js') }} <!-- jQuery cookie -->
-	{{ HTML::script('js/jquery.uniform.min.js') }} <!-- jQuery Uniform -->
-	{{ HTML::script('js/ddsmoothmenu.js') }} <!-- Nav Menu ddsmoothmenu -->
-	{{ HTML::script('js/jquery.flexslider.js') }} <!-- Flex Slider  -->
-	{{ HTML::script('js/jquery.eislideshow.js') }} <!-- Elastic Slider  -->
-	{{ HTML::script('js/jquery.iconmenu.js') }} <!-- Sliding Text and Icon Menu Style  -->
-	{{ HTML::script('js/tytabs.js') }} <!-- jQuery Plugin tytabs  -->
-	{{ HTML::script('js/carousel.js') }} <!-- jQuery Carousel  -->
-	{{ HTML::script('js/jquery.prettyPhoto.js') }} <!-- jQuery Prettyphoto  -->
-	{{ HTML::script('js/jquery.isotope.min.js') }} <!-- Isotope Filtering  -->
-	{{ HTML::script('js/selectnav.js') }} <!-- Responsive Navigation Menu by SelectNav -->
-	{{ HTML::script('js/jquery.ui.totop.js') }} <!-- UItoTop plugin  -->
-	{{ HTML::script('js/jquery.tweet.js') }} <!-- jQuery Tweets -->
+	{{ HTML::script('js/js.min.js') }} <!-- All other js crap compressed -->
 	{{ HTML::script('js/custom.js') }} <!-- Custom Js file for javascript in html -->
 	
 	<!-- End JavaScript -->
@@ -63,14 +37,13 @@
 	<![endif]-->
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon/favicon.ico">
-	<link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-touch-icon-114x114.png">
+	<link rel="shortcut icon" href="{{ URL::to_asset('images/favicon/favicon.ico') }}">
+	<link rel="apple-touch-icon" href="{{ URL::to_asset('images/favicon/apple-touch-icon.png') }}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ URL::to_asset('images/favicon/apple-touch-icon-72x72.png') }}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ URL::to_asset('images/favicon/apple-touch-icon-114x114.png') }}">
 
 </head>
 <body>
-
 	@section('main')
 
 	<div id="wrap" class="boxed">

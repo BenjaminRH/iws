@@ -52,5 +52,15 @@ ul.slides img {
 }
 
 .social-section a:hover i:before {
-	color: #333333;
+	color: #729800;
+}
+
+a {
+	text-decoration: none;
+	color: #98cb00;
+}
+
+a:hover {
+	color: #729800;
+	text-decoration: underline;
 }
