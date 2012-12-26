@@ -53,6 +53,7 @@
 	{{ HTML::script('js/jquery.isotope.min.js') }} <!-- Isotope Filtering  -->
 	{{ HTML::script('js/selectnav.js') }} <!-- Responsive Navigation Menu by SelectNav -->
 	{{ HTML::script('js/jquery.ui.totop.js') }} <!-- UItoTop plugin  -->
+	{{ HTML::script('js/jquery.tweet.js') }} <!-- jQuery Tweets -->
 	{{ HTML::script('js/custom.js') }} <!-- Custom Js file for javascript in html -->
 	
 	<!-- End JavaScript -->
