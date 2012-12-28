@@ -15,7 +15,6 @@
 	<a href="https://www.facebook.com/indiewebseries" target="_blank" class="glyphicons facebook"><i></i></a>
 	<a href="https://twitter.com/indiewebseries" target="_blank" class="glyphicons twitter"><i></i></a>
 	<a href="https://plus.google.com/u/0/109477545180424617862" target="_blank" class="glyphicons google_plus"><i></i></a>
-	<a href="http://flic.kr/ps/2oQydB" target="_blank" class="glyphicons flickr"><i></i></a>
 </div>
 
 @section('sb_below_search')

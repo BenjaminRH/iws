@@ -23,14 +23,9 @@
 	<!-- CSS Style -->
 	{{ HTML::style('css/css.min.css') }}
 	{{ HTML::style('css/custom.css') }}
-	
-	<!-- Start JavaScript -->
+
+	<!-- Header JavaScript -->
 	{{ HTML::script('js/jquery-1.8.3.min.js') }} <!-- jQuery library -->
-	{{ HTML::script('js/jquery-ui.min.js') }} <!-- jQuery Ui -->
-	{{ HTML::script('js/js.min.js') }} <!-- All other js crap compressed -->
-	{{ HTML::script('js/custom.js') }} <!-- Custom Js file for javascript in html -->
-	
-	<!-- End JavaScript -->
 
 	<!--[if lt IE 9]>
 			{{ HTML::script('js/html5.js') }}
@@ -104,6 +99,26 @@
 	</script>
 
 	@yield_section
+
+	{{-- Analytics --}}
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-37282737-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	{{-- End Analytics --}}
+
+	<!-- Start JavaScript -->
+	{{ HTML::script('js/jquery-ui.min.js') }} <!-- jQuery Ui -->
+	{{ HTML::script('js/js.min.js') }} <!-- All other js crap compressed -->
+	{{ HTML::script('js/custom.js') }} <!-- Custom Js file for javascript in html -->
+	<!-- End JavaScript -->
 
 </body>
 </html>
