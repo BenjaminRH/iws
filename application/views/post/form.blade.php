@@ -45,6 +45,13 @@
 
 	<div class="clearfix"></div>
 
+	{{-- Published field --}}
+	<fieldset>
+		{{ Form::checkbox('published', Input::old('published', $post->published)) }} Publish
+	</fieldset>
+
+	<div class="clearfix"></div>
+
 	{{ Form::submit('Save', array('class' => 'button medium color')) }}
 {{ Form::close() }}
 
