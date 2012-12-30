@@ -13,10 +13,18 @@ form fieldset {
 
 #slider {
 	margin-top: 0;
+	padding-bottom: 20px;
+}
+
+#slider * img {
+	width: 620px;
+	height: auto;
+	max-height: 400px;
 }
 
 body {
 	font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+	color: #333333;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -63,4 +71,8 @@ a {
 a:hover {
 	color: #729800;
 	text-decoration: underline;
+}
+
+p {
+	margin-bottom: 15px;
 }

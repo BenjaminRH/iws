@@ -20,7 +20,7 @@ class Tags_Controller extends Base_Controller
 	{
 		// PAGE - List of posts tagged with tag
 		$tag = Tag::find($tag_id);
-		$posts = $tag->posts()->paginate(1);
+		$posts = $tag->posts()->paginate(10);
 
 		return View::make('tag.show')->with('posts', $posts)->with('page_title', 'Tag "'.$tag->name.'"');
 	}

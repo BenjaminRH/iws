@@ -22,7 +22,7 @@ $(document).ready(function() {
 		],
 		fixed: true,
 		wym: true,
-		cleanup: false
+		cleanup: true
 	});
 
 	// Chosen
