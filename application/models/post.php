@@ -57,7 +57,7 @@ class Post extends Eloquent
 		if(isset($input['published'])) {
 			$post->published = true;
 		} else {
-			$this->published = false;
+			$post->published = false;
 		}
 		$post->category_id = $input['category'];
 		$post->user_id = Auth::user()->id;
