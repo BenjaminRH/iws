@@ -40,6 +40,18 @@
 @endsection
 
 @section('content')
+@if(!$post->published)
+<ul id="toggle-view">
+	<li>
+		<h3 class="color">Unpublished</h3>
+		<span class="link">+</span>
+		<div class="panel">
+			<p>This post is unpublished. Only logged-in users will be able to see it. To publish it, check the "Published" setting in the post's edit form.</p>
+		</div>
+	</li>
+</ul><!-- End unpublished notice -->
+@endif
+
 <div class="post bottom">
 	<div class="image-post bottom"> 
 		{{ HTML::image($post->image, $post->title, array('style' => 'width:600px;max-height:400px')) }}

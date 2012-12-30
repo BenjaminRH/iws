@@ -5,13 +5,17 @@ class Posts_Controller extends Base_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->filter('before', 'auth')->only(array('add', 'edit', 'delete'));
+		$this->filter('before', 'auth')->except(array('index', 'show'));
 	}
 
 	public function get_index()
 	{
 		// PAGE - List of posts
-		$posts = Post::order_by('created_at', 'desc')->paginate(10);
+		if(Auth::guest()) {
+			$posts = Post::where('published', '=', 1)->order_by('created_at', 'desc')->paginate(10);
+		} else {
+			$posts = Post::order_by('created_at', 'desc')->paginate(10);
+		}
 
 		return View::make('post.index')->with('posts', $posts)->with('page_title', 'Posts');
 	}
@@ -21,7 +25,7 @@ class Posts_Controller extends Base_Controller
 		// PAGE - Show a single post
 		$post = Post::find_by_slug($post_slug);
 
-		if(!$post) {
+		if(!$post || (Auth::guest() && !$post->published)) {
 			return Response::error('404');
 		}
 

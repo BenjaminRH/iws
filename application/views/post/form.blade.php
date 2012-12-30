@@ -47,7 +47,7 @@
 
 	{{-- Published field --}}
 	<fieldset>
-		{{ Form::checkbox('published', Input::old('published', $post->published)) }} Publish
+		{{ Form::checkbox('published', 'published', Input::old('published', $post->published)) }} Published
 	</fieldset>
 
 	<div class="clearfix"></div>

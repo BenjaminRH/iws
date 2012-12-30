@@ -8,8 +8,6 @@ $(document).ready(function () {
 		contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
 	});
 
-	$("input:checkbox, input:radio, input:file").uniform();
-
 	// add js class to html tag
 	$('html').addClass('js');
 

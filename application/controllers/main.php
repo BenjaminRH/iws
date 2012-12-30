@@ -19,7 +19,7 @@ class Main_Controller extends Base_Controller
 	public function get_index()
 	{
 		// PAGE - Homepage - list of recent posts
-		$posts = Post::with(array('tags', 'category'))->order_by('created_at', 'desc')->take(10)->get();
+		$posts = Post::with(array('tags', 'category'))->where('published', '=', 1)->order_by('created_at', 'desc')->take(10)->get();
 
 		return View::make('main.home')->with('posts', $posts)->with('slider_posts', array_slice($posts, 0, 3))->with('page_title', 'Home');
 	}

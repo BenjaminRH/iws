@@ -37,6 +37,16 @@ ul.pagination {
 	padding: 0;
 }
 
+ul#toggle-view {
+	list-style-type: none;
+	padding: 0;
+	margin-top: -10px;
+}
+
+ul#toggle-view .panel {
+	background-color: #EEEEEE;
+}
+
 ul.slides {
 	text-align: center;
 }

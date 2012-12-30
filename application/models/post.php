@@ -24,7 +24,6 @@ class Post extends Eloquent
 		'body' => 'required|min:100',
 		'category' => 'required|integer',
 		'tags' => 'required',
-		'published' => ''
 	);
 
 	// Post belongs_to user
@@ -55,7 +54,11 @@ class Post extends Eloquent
 		$post->slug = $input['slug'];
 		$post->image = $input['image'];
 		$post->body = $input['body'];
-		$post->published = $input['published'];
+		if(isset($input['published'])) {
+			$post->published = true;
+		} else {
+			$this->published = false;
+		}
 		$post->category_id = $input['category'];
 		$post->user_id = Auth::user()->id;
 		$post->save();
@@ -71,7 +74,11 @@ class Post extends Eloquent
 		$this->slug = $input['slug'];
 		$this->image = $input['image'];
 		$this->body = $input['body'];
-		$this->published = $input['published'];
+		if(isset($input['published'])) {
+			$this->published = true;
+		} else {
+			$this->published = false;
+		}
 		$this->category_id = $input['category'];
 		$this->tags()->sync($input['tags']);
 		$this->save();
