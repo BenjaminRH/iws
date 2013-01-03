@@ -1,5 +1,5 @@
 <article class="post bottom">
-	<h2 class="title bottom top-2">{{ HTML::link('posts/'.$post->slug, $post->title) }} <span class="line"></span></h2>
+	<h2 class="title bottom top-2"><span>{{ HTML::link('posts/'.$post->slug, $post->title) }}</span> <span class="line"></span></h2>
 
 	<div class="image-post bottom left"> 
 		{{ HTML::image($post->image, $post->title, array('style' => 'max-width:100px;max-height:65px')) }}

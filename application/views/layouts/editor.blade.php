@@ -32,3 +32,34 @@ $(document).ready(function() {
 	});
 });
 </script>
+
+{{-- Slug and Title --}}
+<script>
+String.prototype.toTitleCase = function () {
+    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+};
+
+$('#title-fix').click(function() {
+	// Set the title to title case
+	var title = $('#title').val();
+
+	$('#title').val(title.toTitleCase());
+
+	return false;
+});
+
+$('#slug-fix').click(function() {
+	// Set the slug
+	// title -> to lower case ->
+	// replace all spaces with dashes ->
+	// remove all non alphanumeric characters that are not dashes
+
+	var title = $('#title').val();
+
+	$('#slug').val(
+		title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '')
+	);
+
+	return false;
+});
+</script>

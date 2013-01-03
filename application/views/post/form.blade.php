@@ -7,12 +7,14 @@
 	<div class="form-box">
 		{{ Form::label('title', 'Title') }}
 		{{ Form::text('title', Input::old('title', $post->title), array('class'=>'text')) }}
+		(<a href="#" id="title-fix">fix</a>)
 	</div>
 
 	{{-- Slug field --}}
 	<div class="form-box last">
 		{{ Form::label('slug', 'Slug') }}
 		{{ Form::text('slug', Input::old('slug', $post->slug), array('class'=>'text')) }}
+		(<a href="#" id="slug-fix">fix</a>)
 	</div>
 
 	<div class="clearfix"></div>

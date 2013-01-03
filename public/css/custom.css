@@ -86,3 +86,12 @@ a:hover {
 p {
 	margin-bottom: 15px;
 }
+
+article.post h2.title span:first-child {
+	display: inline-block;
+	width: 80%;
+}
+
+.navigation ul li a:hover {
+	text-decoration: none;
+}

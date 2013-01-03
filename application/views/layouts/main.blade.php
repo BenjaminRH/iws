@@ -10,8 +10,9 @@
 	@section('meta_page_title')
 	<title>{{ $page_title }} - Indie Web Series</title>
 	@yield_section
-	<meta name="description" content="">
-	<meta name="author" content="">
+
+	<meta name="keywords" content="Indie Web Series,indie,web,series,web series,youtube,channel,media,tv,online,review,preview,scoop,recap,sneap peak,behind the scenes,article,post">
+	<meta name="description" content="A comprehensive authority on internet web series, bringing you updates, interviews, reviews and sneak-peaks of upcoming media.">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

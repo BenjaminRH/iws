@@ -5,6 +5,23 @@
 	</div>
 </div><!-- End about -->
 
+@if(Auth::check())
+	<div class="eight columns">
+		<div class="about">
+			<h3 class="title">Website Status<span class="line"></span></h3>
+			<h5 style="color:white;text-shadow:none;">Future features</h5>
+			<ul class="star-list"><li>Feeds (RSS, Atom)</li></ul> <!-- Working on currently -->
+			<ul class="plus-list"> <!-- Upcoming features -->
+				<li>Admin dashboard</li>
+				<li>Advanced posts search/filtering</li>
+				<li>Post title and slug helpers</li>
+				<li>Add image and video features to editor</li>
+				<li>Improved admin backend</li>
+			</ul>
+		</div>
+	</div><!-- End updates -->
+@endif
+
 <div class="sixteen columns"><hr class="bottom" /></div>
 
 <div class="sixteen columns">
