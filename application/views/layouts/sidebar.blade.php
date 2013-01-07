@@ -1,10 +1,19 @@
 @section('sb_top')
 @yield_section
 
-<!-- Search Widget -->
+<!-- NEW Search Widget -->
+@if(Auth::check())
 <div class="search top bottom">
 	<input type="hidden" class="bigdrop" id="site-search" style="width:100%;height:auto">
 </div>
+@else
+<!-- OLD Search Widget -->
+<div class="search top bottom">
+	<input type="text" class="search" value="Search (coming soon...)" style="color:#888" disabled>
+	<input type="submit" value="" class="submit-search" style="cursor:default" disabled>
+</div>
+<!-- End -->
+@endif
 <!-- End -->
 
 <h2 class="title bottom-2">Follow us<span class="line"></span></h2>

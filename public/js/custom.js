@@ -256,18 +256,18 @@ $(document).ready(function () {
 		placeholder: "Search posts",
 		minimumInputLength: 3,
 		ajax: {
-			url: "http://localhost/iws/search",
+			url: "http://indiewebseries.com/search",
 			dataType: 'json',
-			quietMillis: 100,
-			data: function (query, page) {
+			quietMillis: 500,
+			data: function (term, page) {
 				return {
-					q: query,
+					q: term,
 					page_limit: 10,
 					page: page // page number
 				};
 			},
 			results: function (data, page) {
-				var more = (page * 10) < data.length; // whether or not there are more results available
+				var more = (page * 10) < data.length; // whether or not there are more results available);
 
 				// return the value of more to tell if more results can be loaded
 				return {results: data, more: more};
@@ -275,19 +275,22 @@ $(document).ready(function () {
 		},
 		formatResult: function(post) {
 			// return html markup for individual result item
-			markup = '<div style="margin-bottom:5px;background-color:#eee">';
-			markup += '<img src="'+post.image+'" style="width:40%;float:left;margin-right:2px">';
-			markup += '<p><strong>'+post.title+'</strong></p>';
-			markup += '<div class="clearfix"></div></div>';
+			markup = '<img src="'+post.image+'" style="width:40%;float:left;margin-right:5px">';
+			markup += '<p>'+post.title+'</p>';
+			markup += '<div class="clearfix"></div>';
 			return markup;
 		},
 		formatSelection: function(post) {
 			// This shows up in the select box
 			return post.title;
 		},
-		dropdownCssClass: "bigdrop", // apply css that makes the dropdown taller
-		change: function(selection) {
-			window.location.href = "http://localhost/iws/posts/"+selection.slug;
+		dropdownCssClass: "bigdrop" // apply css that makes the dropdown taller
+	}).on('change', function(e) {
+		try {
+			var slug = e.val.slug;
+			window.location.href = "http://indiewebseries.com/posts/"+slug;
+		} catch(error) {
+			console.log('Selected search result is invalid: ');
 		}
 	});
 });

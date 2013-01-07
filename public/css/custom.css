@@ -99,3 +99,8 @@ article.post h2.title span:first-child {
 .select2-results li:first-child {
 	padding: 4px 0;
 }
+
+.select2-container .select2-choice div {
+	border: none;
+	background: transparent;
+}
