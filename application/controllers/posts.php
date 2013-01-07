@@ -12,9 +12,9 @@ class Posts_Controller extends Base_Controller
 	{
 		// PAGE - List of posts
 		if(Auth::guest()) {
-			$posts = Post::where('published', '=', 1)->order_by('created_at', 'desc')->paginate(10);
+			$posts = Post::where('published', '=', 1)->order_by('created_at', 'desc')->paginate(5);
 		} else {
-			$posts = Post::order_by('created_at', 'desc')->paginate(10);
+			$posts = Post::order_by('created_at', 'desc')->paginate(5);
 		}
 
 		return View::make('post.index')->with('posts', $posts)->with('page_title', 'Posts');

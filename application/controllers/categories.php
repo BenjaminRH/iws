@@ -21,9 +21,9 @@ class Categories_Controller extends Base_Controller
 		// PAGE - List of posts in category
 		$category = Category::find($category_id);
 		if(Auth::guest()) {
-			$posts = $category->posts()->where('published', '=', 1)->paginate(10);
+			$posts = $category->posts()->where('published', '=', 1)->order_by('created_at', 'desc')->paginate(5);
 		} else {
-			$posts = $category->posts()->paginate(10);
+			$posts = $category->posts()->order_by('created_at', 'desc')->paginate(5);
 		}
 
 		return View::make('category.show')->with('posts', $posts)->with('page_title', 'Category "'.$category->name.'"');

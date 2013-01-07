@@ -5,6 +5,14 @@ class Post extends Eloquent
 	// Enable timestamps
 	public static $timestamps = true;
 
+	// Hide attributes
+	public static $hidden = array(
+		'user_id',
+		'published',
+		'id',
+		'category_id'
+	);
+
 	// Acceptable inputs
 	public static $accessible = array(
 		'title',

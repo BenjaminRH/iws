@@ -19,6 +19,7 @@
 	</div>
 </div><!-- End Slider -->
 
+<h1 class="title bottom top">Recent Posts<span class="line"></span></h1>
 @foreach($posts as $post)
 	@include('post.teaser')
 @endforeach

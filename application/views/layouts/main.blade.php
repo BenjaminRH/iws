@@ -8,7 +8,11 @@
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
 	@section('meta_page_title')
+	@if(isset($page_title))
 	<title>{{ $page_title }} - Indie Web Series</title>
+	@else
+	<title>Indie Web Series</title>
+	@endif
 	@yield_section
 
 	<meta name="keywords" content="Indie Web Series,indie,web,series,web series,youtube,channel,media,tv,online,review,preview,scoop,recap,sneap peak,behind the scenes,article,post">
@@ -55,12 +59,14 @@
 			@include('layouts.messages')
 
 			@section('page_title')
+			@if(isset($page_title))
 			<div class="sixteen columns">
 				<h1 class="page-title">
 					{{ $page_title }}
 					<span class="line"></span>
 				</h1>
 			</div><!-- Page Title -->
+			@endif
 			@yield_section
 
 

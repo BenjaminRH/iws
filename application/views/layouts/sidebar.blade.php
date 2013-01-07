@@ -3,10 +3,7 @@
 
 <!-- Search Widget -->
 <div class="search top bottom">
-	{{ Form::open('search', 'GET') }}
-		{{ Form::text('q', 'Search', array('class' => 'search')) }}
-		{{ Form::submit('', array('class' => 'submit-search')) }}
-	{{ Form::close() }}
+	<input type="hidden" class="bigdrop" id="site-search" style="width:100%;height:auto">
 </div>
 <!-- End -->
 

@@ -19,15 +19,17 @@ class Main_Controller extends Base_Controller
 	public function get_index()
 	{
 		// PAGE - Homepage - list of recent posts
-		$posts = Post::with(array('tags', 'category'))->where('published', '=', 1)->order_by('created_at', 'desc')->take(10)->get();
+		$posts = Post::with(array('tags', 'category'))->where('published', '=', 1)->order_by('created_at', 'desc')->take(5)->get();
 
 		return View::make('main.home')->with('posts', $posts)->with('slider_posts', array_slice($posts, 0, 3))->with('page_title', 'Home');
 	}
 
 	public function get_search()
 	{
-		// PAGE - Search results
-		return View::make('main.search')->with('page_title', 'Search results');
+		// JSON - Search results
+		$query = Input::get('q');
+		$posts = Post::where('title', 'LIKE', '%'.$query.'%')->where('published', '=', 1)->get();
+		return Response::eloquent($posts);
 	}
 
 	public function get_about()

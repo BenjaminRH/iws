@@ -18,7 +18,7 @@
 |
 | You can even respond to more than one URI:
 |
-|       Route::post(array('hello', 'world'), function()
+|       Route::any(array('hello', 'world'), function()
 |       {
 |           return 'Hello World!';
 |       });
@@ -37,63 +37,46 @@ Route::get('home', function() {
 	return Redirect::to('/');
 });
 Route::get('about', 'main@about');
-Route::get('contact', 'main@contact');
-Route::post('contact', 'main@contact');
-Route::get('search', 'main@search'); // GOOGLE search results page
+Route::any('contact', 'main@contact');
+Route::get('search', 'main@search');
 
 // Auth
-Route::get('login', 'auth@login');
-Route::post('login', 'auth@login');
+Route::any('login', 'auth@login');
 Route::get('logout', 'auth@logout');
 
 // User
 Route::get('admin/users', 'users@index');
-Route::get('admin/users/add', 'users@add');
-Route::post('admin/users/add', 'users@add');
-Route::get('admin/users/edit/(:num)', 'users@edit');
-Route::post('admin/users/edit/(:num)', 'users@edit');
-Route::get('admin/users/delete/(:num)', 'users@delete');
-Route::post('admin/users/delete/(:num)', 'users@delete');
+Route::any('admin/users/add', 'users@add');
+Route::any('admin/users/edit/(:num)', 'users@edit');
+Route::any('admin/users/delete/(:num)', 'users@delete');
 
 // Post
 Route::get('posts', 'posts@index');
 Route::get('posts/(:any)', 'posts@show');
-Route::get('admin/posts/add', 'posts@add');
-Route::post('admin/posts/add', 'posts@add');
-Route::get('admin/posts/(:any)/edit', 'posts@edit');
-Route::post('admin/posts/(:any)/edit', 'posts@edit');
-Route::get('admin/posts/(:any)/delete', 'posts@delete');
-Route::post('admin/posts/(:any)/delete', 'posts@delete');
+Route::any('admin/posts/add', 'posts@add');
+Route::any('admin/posts/(:any)/edit', 'posts@edit');
+Route::any('admin/posts/(:any)/delete', 'posts@delete');
 
 // Series
 Route::get('series', 'series@index');
 Route::get('series/(:any)', 'series@show');
-Route::get('admin/series/add', 'series@add');
-Route::post('admin/series/add', 'series@add');
-Route::get('admin/series/(:any)/edit', 'series@edit');
-Route::post('admin/series/(:any)/edit', 'series@edit');
-Route::get('admin/series/(:any)/delete', 'series@delete');
-Route::post('admin/series/(:any)/delete', 'series@delete');
+Route::any('admin/series/add', 'series@add');
+Route::any('admin/series/(:any)/edit', 'series@edit');
+Route::any('admin/series/(:any)/delete', 'series@delete');
 
 // Tag
 Route::get('admin/tags', 'tags@index');
 Route::get('tags/(:num)', 'tags@show');
-Route::get('admin/tags/add', 'tags@add');
-Route::post('admin/tags/add', 'tags@add');
-Route::get('admin/tags/(:num)/edit', 'tags@edit');
-Route::post('admin/tags/(:num)/edit', 'tags@edit');
-Route::get('admin/tags/(:num)/delete', 'tags@delete');
-Route::post('admin/tags/(:num)/delete', 'tags@delete');
+Route::any('admin/tags/add', 'tags@add');
+Route::any('admin/tags/(:num)/edit', 'tags@edit');
+Route::any('admin/tags/(:num)/delete', 'tags@delete');
 
 // Category
 Route::get('admin/categories', 'categories@index');
 Route::get('categories/(:num)', 'categories@show');
-Route::get('admin/categories/add', 'categories@add');
-Route::post('admin/categories/add', 'categories@add');
-Route::get('admin/categories/(:num)/edit', 'categories@edit');
-Route::post('admin/categories/(:num)/edit', 'categories@edit');
-Route::get('admin/categories/(:num)/delete', 'categories@delete');
-Route::post('admin/categories/(:num)/delete', 'categories@delete');
+Route::any('admin/categories/add', 'categories@add');
+Route::any('admin/categories/(:num)/edit', 'categories@edit');
+Route::any('admin/categories/(:num)/delete', 'categories@delete');
 
 /*
 |--------------------------------------------------------------------------

@@ -21,9 +21,9 @@ class Tags_Controller extends Base_Controller
 		// PAGE - List of posts tagged with tag
 		$tag = Tag::find($tag_id);
 		if(Auth::guest()) {
-			$posts = $tag->posts()->where('published', '=', 1)->paginate(10);
+			$posts = $tag->posts()->where('published', '=', 1)->order_by('created_at', 'desc')->paginate(5);
 		} else {
-			$posts = $tag->posts()->paginate(10);
+			$posts = $tag->posts()->order_by('created_at', 'desc')->paginate(5);
 		}
 
 		return View::make('tag.show')->with('posts', $posts)->with('page_title', 'Tag "'.$tag->name.'"');
